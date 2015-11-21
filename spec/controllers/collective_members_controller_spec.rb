@@ -12,4 +12,4 @@ RSpec.describe CollectiveMembersController, type: :controller do
 
   let(:valid_session) { {} }
 
-  end
+end
