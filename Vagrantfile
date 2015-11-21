@@ -6,8 +6,8 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu/trusty32"
   config.vm.network "forwarded_port", guest: 3000, host: 3000
-  config.vm.network :private_network, ip: '192.168.50.50'
-  config.vm.synced_folder '.', '/vagrant', nfs: true, nfs_export: true
+  # config.vm.network :private_network, ip: '192.168.50.50'
+  # config.vm.synced_folder '.', '/vagrant', nfs: true, nfs_export: true
 
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
@@ -23,7 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     apt-get -y update
     apt-get -y upgrade
 
-    apt-get -y install git build-essential cmake ruby-build jvm-7-avian-jre libjetty-extra-java libtomcat7-java silversearcher-ag nodejs-legacy npm postgresql-9.3 postgresql-server-dev-9.3 postgresql-contrib-9.3 libyaml-dev sqlite3 autoconf libgdbm-dev libncurses5-dev automake libtool bison pkg-config libffi-dev libpq-dev
+    apt-get -y install git build-essential cmake ruby-build silversearcher-ag nodejs-legacy npm postgresql-9.3 postgresql-server-dev-9.3 postgresql-contrib-9.3 libyaml-dev sqlite3 autoconf libgdbm-dev libncurses5-dev automake libtool bison pkg-config libffi-dev libpq-dev
     sudo -u postgres createuser --superuser vagrant
   SCRIPT
 
