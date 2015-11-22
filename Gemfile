@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'devise'
 gem 'font-kit-rails', '~> 1.2.0'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
