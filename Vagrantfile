@@ -6,8 +6,8 @@ VAGRANTFILE_API_VERSION = "2"
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box = "ubuntu/trusty32"
   config.vm.network "forwarded_port", guest: 3000, host: 3000
-  # config.vm.network :private_network, ip: '192.168.50.50'
-  # config.vm.synced_folder '.', '/vagrant', nfs: true, nfs_export: true
+  config.vm.network :private_network, ip: '192.168.50.50'
+  config.vm.synced_folder '.', '/vagrant', nfs: true, nfs_export: true
 
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
@@ -50,5 +50,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     echo "alias dbmigrate='bundle exec rake db:migrate && bundle exec rake db:migrate RAILS_ENV="test"'" >> ~/.bashrc
     echo "alias runspec='bundle exec bin/rspec'" >> ~/.bashrc
+    echo "alias serve='bin/rails s -b 0.0.0.0
   SCRIPT
 end
