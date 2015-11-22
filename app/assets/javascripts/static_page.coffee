@@ -4,4 +4,3 @@
 
 $ ->
   $('#calendar').fullCalendar()
-  init()
