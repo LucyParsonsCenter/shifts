@@ -46,6 +46,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     bundle exec rake db:migrate
     bundle exec rake db:migrate RAILS_ENV="test"
     bundle exec rails r script/create_sample_data.rb
+    echo 'User.create(email: "example@foobar.com", password: "abc123", password_confirmation: "abc123")' | rails c > /dev/null
 
     echo "cd /vagrant" >> ~/.profile
     echo "done."
