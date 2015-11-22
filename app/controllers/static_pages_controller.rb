@@ -7,4 +7,8 @@ class StaticPagesController < ApplicationController
   def help
     render :help
   end
+
+  def about
+    render :about
+  end
 end
