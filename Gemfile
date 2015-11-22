@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 gem 'administrate'
 gem 'factory_girl_rails'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
