@@ -3,11 +3,12 @@
     * get some sort of calendar interface
     * deploy it!
     * write some documentation or help page kind of thing
+    * put links to /home on the administrate pages
 
 #In progress:
-    * build a home screen
 
 #Completed:
+    * build a home screen
     * add trainee and collective member models
     * add administrate
     * get dev env set up
