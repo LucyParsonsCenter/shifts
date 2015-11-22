@@ -82,6 +82,8 @@ GEM
     factory_girl_rails (4.5.0)
       factory_girl (~> 4.5.0)
       railties (>= 3.0.0)
+    font-kit-rails (1.2.0)
+      rails
     fullcalendar-rails (2.4.0.2)
       jquery-rails (>= 4.0.5, < 5.0.0)
       jquery-ui-rails (>= 5.0.2)
@@ -228,6 +230,7 @@ DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
   factory_girl_rails
+  font-kit-rails (~> 1.2.0)
   fullcalendar-rails
   haml
   jbuilder (~> 2.0)
