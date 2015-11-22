@@ -4,3 +4,5 @@
 
 A small rails app that manages the training and shift schedule at the Lucy
 Parsons Center.
+
+There's a little [TODO list](docs/TODO.md) to keep track of things.
