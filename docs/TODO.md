@@ -2,10 +2,10 @@
     * add authentication
     * get some sort of calendar interface
     * deploy it!
-    * write some documentation or help page kind of thing
     * put links to /home on the administrate pages
 
 #In progress:
+    * write some documentation or help page kind of thing
 
 #Completed:
     * build a home screen
