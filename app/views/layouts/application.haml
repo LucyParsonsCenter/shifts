@@ -10,3 +10,7 @@
     .container
       = render :partial => 'layouts/navigation'
       = yield
+    %p.notice
+      = notice
+    %p.alert
+      = alert

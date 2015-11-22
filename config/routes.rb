@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'static_pages#home'
+
   namespace :admin do
     DashboardManifest::DASHBOARDS.each do |dashboard_resource|
       resources dashboard_resource
