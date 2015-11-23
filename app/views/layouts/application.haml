@@ -8,7 +8,8 @@
     = csrf_meta_tags
   %body
     .container
-      = render :partial => 'layouts/navigation'
+      - if user_signed_in?
+        = render :partial => 'layouts/navigation'
       = yield
     %p.notice
       = notice
