@@ -1,11 +1,10 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-  config.secret_key = ENV['DEVISE_SECRET_KEY']
-
   config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   require 'devise/orm/active_record'
+
   config.authentication_keys = [:email]
 
   # Configure parameters from the request object used for authentication. Each entry
@@ -14,15 +13,7 @@ Devise.setup do |config|
   # if you set :request_keys to [:subdomain], :subdomain will be used on authentication.
   # The same considerations mentioned for authentication_keys also apply to request_keys.
   # config.request_keys = []
-
-  # Configure which authentication keys should be case-insensitive.
-  # These keys will be downcased upon creating or modifying a user and when used
-  # to authenticate or find a user. Default is :email.
   config.case_insensitive_keys = [:email]
-
-  # Configure which authentication keys should have whitespace stripped.
-  # These keys will have whitespace before and after removed upon creating or
-  # modifying a user and when used to authenticate or find a user. Default is :email.
   config.strip_whitespace_keys = [:email]
 
   # Tell if authentication through request.params is enabled. True by default.
