@@ -1,23 +1,23 @@
 @charset "utf-8";
-
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "fullcalendar";
-@import "font-kit-rails";
 
 @import "normalize-rails";
 @import "bourbon";
 @import "base/grid-settings";
 @import "neat";
 
-@import "selectize";
-@import "datetime_picker";
-
 @import "mixins/mixins";
 @import "base/base";
+
+@import "selectize";
+@import "datetime_picker";
 
 @import "layout";
 @import "sidebar";
 
 @import "components/components";
 
+body {
+  font-size: 14px;
+}
