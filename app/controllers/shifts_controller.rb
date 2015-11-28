@@ -8,7 +8,7 @@ class ShiftsController < ApplicationController
   def normal_shifts
     start_date = params[:start].to_date
     end_date = params[:end].to_date
-    @shifts = Shift.normal.where(date: start_date..end_date)
+    @shifts = Shift.normal.where(date_and_time: start_date..end_date)
     respond_to do |format|
       format.json { render json: @shifts }
     end
@@ -17,7 +17,8 @@ class ShiftsController < ApplicationController
   def training_shifts
     start_date = params[:start].to_date
     end_date = params[:start].to_date
-    @shifts = Shift.training.where(date: start_date..end_date)
+    @shifts = Shift.training.where(date_and_time: start_date..end_date)
+    binding.pry
     respond_to do |format|
       format.json { render json: @shifts }
     end
