@@ -1,9 +1,7 @@
 #Not yet started: 
 
-* add authentication
-* get some sort of calendar interface
-* deploy it!
-* put links to /home on the administrate pages
+* add a shift model
+* build out calendar functionality
 
 #In progress:
 
@@ -16,3 +14,7 @@
 * add administrate
 * get dev env set up
 * install various things (bootstrap, etc)
+* deploy it!
+* put links to /home (nav bar) on the administrate pages
+* add authentication (devise)
+* added fullcalendar
