@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20151128195743) do
   create_table "shifts", force: :cascade do |t|
     t.integer  "collective_member_id", null: false
     t.integer  "trainee_id"
-    t.datetime "date_and_time"
+    t.datetime "date_and_time",        null: false
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
