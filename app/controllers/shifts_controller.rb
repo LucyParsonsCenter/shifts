@@ -2,6 +2,7 @@ class ShiftsController < ApplicationController
   before_action :set_shift, only: [:show, :edit, :update, :destroy]
 
   def index
+    binding.pry
     @shifts = Shift.all
   end
 

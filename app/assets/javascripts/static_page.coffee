@@ -3,4 +3,14 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('#calendar').fullCalendar()
+  $('#calendar').fullCalendar(
+    {
+      eventSources: [
+        {
+          url: '/shifts',
+          color: 'blue',
+          textColor: 'black'
+        }
+      ]
+    }
+  )
