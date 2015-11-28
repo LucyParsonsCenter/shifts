@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     root controller: DashboardManifest::ROOT_DASHBOARD, action: :index
   end
 
+  resources :meetings
   resources :collective_members
   resources :trainees
   resources :shifts
