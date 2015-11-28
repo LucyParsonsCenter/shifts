@@ -1,0 +1,52 @@
+!!!
+%html
+  %head
+    %meta{:name => "ROBOTS", :content =>"NOODP"}
+    %meta{:name => "viewport", :content => "initial-scale=1"}
+    %title= content_for(:title)
+    = stylesheet_link_tag "//fonts.googleapis.com/css?family=Lato:300,400,900", media: "all"
+    = stylesheet_link_tag "administrate/application", media: "all"
+    = stylesheet_link_tag "application", :media => "all", 'data-turbolinks-track' => true
+    = javascript_include_tag "application", 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body.administrate
+    %main.main
+      .sidebar
+      .container
+        - if user_signed_in?
+          = render :partial => 'layouts/navigation'
+        = content_for(:search)
+        .content
+          = render "flashes"
+          = yield
+  = render "javascript"
+
+
+-# <%#
+-# <!DOCTYPE html>
+-# <html>
+-# <head>
+-#   <title><%= content_for(:title) %> | <%= Rails.application.class.parent_name.titlecase %></title>
+-#   <%= stylesheet_link_tag "//fonts.googleapis.com/css?family=Lato:300,400,900", media: "all" %>
+-#   <%= stylesheet_link_tag "administrate/application", media: "all" %>
+-#   <%= csrf_meta_tags %>
+-# </head>
+
+-# <body class="administrate">
+-#   <main class="main">
+-#     <div class="sidebar">
+-#       <%= render "sidebar" -%>
+-#     </div>
+
+-#     <div class="container">
+-#       <%= content_for(:search) %>
+-#       <div class="content">
+-#         <%= render "flashes" -%>
+-#         <%= yield %>
+-#       </div>
+-#     </div>
+-#   </main>
+
+-#   <%= render "javascript" %>
+-# </body>
+-# </html>
