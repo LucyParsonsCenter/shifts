@@ -1,5 +1,10 @@
 @charset "utf-8";
 
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "fullcalendar";
+@import "font-kit-rails";
+
 @import "normalize-rails";
 @import "bourbon";
 @import "base/grid-settings";
@@ -16,7 +21,3 @@
 
 @import "components/components";
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "fullcalendar";
-@import "font-kit-rails";
