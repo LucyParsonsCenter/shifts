@@ -1,6 +1,10 @@
 class MeetingsController < ApplicationController
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
 
+  def index
+    @meetings = Meeting.all
+  end
+
   def meetings_feed
     start_date = params[:start].to_date
     end_date = params[:start].to_date

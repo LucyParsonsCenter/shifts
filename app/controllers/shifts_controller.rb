@@ -7,7 +7,7 @@ class ShiftsController < ApplicationController
 
   def normal_shifts
     start_date = params[:start].to_date
-    end_date = params[:start].to_date
+    end_date = params[:end].to_date
     @shifts = Shift.where(:normal).where(date: start_date..end_date)
     respond_to do |format|
       format.json { render json: @shifts }
@@ -18,15 +18,6 @@ class ShiftsController < ApplicationController
     start_date = params[:start].to_date
     end_date = params[:start].to_date
     @shifts = Shift.where(:training).where(date: start_date..end_date)
-    respond_to do |format|
-      format.json { render json: @shifts }
-    end
-  end
-
-  def meeting_shifts
-    start_date = params[:start].to_date
-    end_date = params[:start].to_date
-    @shifts = Shift.where(:meeting).where(date: start_date..end_date)
     respond_to do |format|
       format.json { render json: @shifts }
     end
