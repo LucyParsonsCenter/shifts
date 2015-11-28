@@ -6,9 +6,19 @@ $ ->
   $('#calendar').fullCalendar(
     {
       eventSources: [
-        {
-          url: '/shifts',
+        { # here we set up the API endpoints for our different shifts
+          url: '/normal_shifts',
           color: 'blue',
+          textColor: 'black'
+        },
+        {
+          url: '/training_shifts',
+          color: 'yellow',
+          textColor: 'black'
+        },
+        {
+          url: '/meetings',
+          color: 'pink',
           textColor: 'black'
         }
       ]
