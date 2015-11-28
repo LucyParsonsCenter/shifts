@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :collective_members
   resources :trainees
+  resources :shifts
 
   get '/' => 'static_pages#home'
   get '/home' => 'static_pages#home'
