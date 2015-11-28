@@ -21,5 +21,5 @@ Rails.application.routes.draw do
   get '/about' => 'static_pages#about'
   get '/normal_shifts' => 'shifts#normal_shifts'
   get '/training_shifts' => 'shifts#training_shifts'
-  get '/meetings' => 'meetings#meetings_feed'
+  get '/meetings_feed' => 'meetings#meetings_feed'
 end

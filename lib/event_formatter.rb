@@ -11,5 +11,8 @@ class EventFormatter
     else
       event["title"] = @object.collective_member.first_name
     end
+    event["start"] = @object.start_time
+    event["end"] = @object.end_time
+    event["allDay"] = false
 
 

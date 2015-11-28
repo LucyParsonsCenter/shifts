@@ -17,7 +17,7 @@ $ ->
           textColor: 'black'
         },
         {
-          url: '/meetings',
+          url: '/meetings_feed',
           color: 'pink',
           textColor: 'black'
         }
