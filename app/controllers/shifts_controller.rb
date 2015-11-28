@@ -2,11 +2,25 @@ class ShiftsController < ApplicationController
   before_action :set_shift, only: [:show, :edit, :update, :destroy]
 
   def index
-    binding.pry
     @shifts = Shift.all
   end
 
-  def show
+  def normal_shifts
+    start_date = params[:start].to_date
+    end_date = params[:start].to_date
+    @events = Shift.where(:normal).where(date: start_date..end_date)
+  end
+
+  def training_shifts
+    start_date = params[:start].to_date
+    end_date = params[:start].to_date
+    @events = Shift.where(:training).where(date: start_date..end_date)
+  end
+
+  def meeting_shifts
+    start_date = params[:start].to_date
+    end_date = params[:start].to_date
+    @events = Shift.where(:meeting).where(date: start_date..end_date)
   end
 
   def new
