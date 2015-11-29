@@ -46,6 +46,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     bundle exec rake db:migrate
     bundle exec rake db:migrate RAILS_ENV="test"
     bundle exec rails r script/create_sample_data.rb
+    bundle exec rails r script/fake_event_data.rb
     echo 'User.create(email: "example@foobar.com", password: "abc123", password_confirmation: "abc123")' | rails c > /dev/null
 
     echo 'export DEVISE_TOKEN="a4ed267775e7b70b4b1fbc86520495ce0df1e5e7c3e3091374e47eb9c9051d3874f2186d7b99d7b6f6c67fba1b1cb990a56a9919418c36c70ba4e745ada3d0d7"' >> ~/.profile
