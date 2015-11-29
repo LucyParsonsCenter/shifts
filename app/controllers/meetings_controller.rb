@@ -8,7 +8,7 @@ class MeetingsController < ApplicationController
   def meetings_feed
     start_date = params[:start].to_date
     end_date = params[:end].to_date
-    @meetings = Meeting.where(date_and_time: start_date..end_date)
+    @meetings = Meeting.where(start_time: start_date..end_date)
     respond_to do |format|
       format.json { render json: @meetings }
     end
