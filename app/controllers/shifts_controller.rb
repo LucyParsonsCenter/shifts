@@ -9,6 +9,7 @@ class ShiftsController < ApplicationController
     start_date = params[:start].to_date
     end_date = params[:end].to_date
     @shifts = Shift.normal.where(start_time: start_date..end_date)
+    binding.pry
     respond_to do |format|
       format.json { render json: @shifts }
     end
@@ -65,13 +66,11 @@ class ShiftsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_shift
-      @shift = Shift.find(params[:id])
-    end
+  def set_shift
+    @shift = Shift.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def shift_params
-      params[:shift]
-    end
+  def shift_params
+    params[:shift]
+  end
 end
