@@ -1,18 +1,13 @@
 class EventFormatter
-
-  def initialize(object)
-    @object = object
-  end
-
-  def format
+  def self.format(object)
     event = Hash.new
-    if @object.class == Meeting
+    if object.class == Meeting
       event["title"] = "Collective Meeting"
     else
-      event["title"] = @object.collective_member.first_name
+      event["title"] = object.collective_member.first_name
     end
-    event["start"] = @object.start_time
-    event["end"] = @object.end_time
+    event["start"] = object.start_time
+    event["end"] = object.end_time
     event["allDay"] = false
     event["editable"] = true
     event

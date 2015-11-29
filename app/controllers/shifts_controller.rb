@@ -10,7 +10,7 @@ class ShiftsController < ApplicationController
     end_date = params[:end].to_date
     @shifts = Shift.normal.where(start_time: start_date..end_date)
     respond_to do |format|
-      format.json { render json: @shifts.map { |s| EventFormatter.new(s).format } }
+      format.json { render json: @shifts.map { |s| EventFormatter.format(s) } }
     end
   end
 
@@ -19,7 +19,7 @@ class ShiftsController < ApplicationController
     end_date = params[:end].to_date
     @shifts = Shift.training.where(start_time: start_date..end_date)
     respond_to do |format|
-      format.json { render json: @shifts.map { |s| EventFormatter.new(s).format } }
+      format.json { render json: @shifts.map { |s| EventFormatter.format(s) } }
     end
   end
 
