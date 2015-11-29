@@ -4,7 +4,8 @@
 def random_date_and_time
   date1 = Time.current.beginning_of_month
   date2 = Time.current.end_of_month
-  Time.at((date2.to_f - date1.to_f)*rand + date1.to_f)
+  random_time = Time.at((date2.to_f - date1.to_f)*rand + date1.to_f)
+  {start: random_time, end: random_time + (60 * 60 * 3)}
 end
 
 def random_collective_member
@@ -16,15 +17,18 @@ def random_trainee
 end
 
 def random_normal_shift
-  Shift.create(collective_member: random_collective_member, date_and_time: random_date_and_time)
+  shift_time = random_date_and_time
+  Shift.create(collective_member: random_collective_member, start_time: shift_time[:start], end_time: shift_time[:end])
 end
 
 def random_training_shift
-  Shift.create(collective_member: random_collective_member, date_and_time: random_date_and_time, trainee: random_trainee)
+  shift_time = random_date_and_time
+  Shift.create(collective_member: random_collective_member, start_time: shift_time[:start], end_time: shift_time[:end], trainee: random_trainee)
 end
 
 def random_meeting
-  Meeting.create(date_and_time: random_date_and_time)
+  shift_time = random_date_and_time
+  Meeting.create(start_time: shift_time[:start], end_time: shift_time[:end])
 end
 
 1.upto 100 do
