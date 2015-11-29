@@ -21,6 +21,16 @@ $ ->
           color: 'pink',
           textColor: 'black'
         }
-      ]
+      ],
+      header: {
+        left: 'today prev,next'
+        center: 'title',
+        right: 'month,agendaWeek,agendaDay',
+      },
+      eventClick:  (event, jsEvent, view) ->
+            $('#modal-title').html(event.title)
+            $('#modal-body').html(event.description)
+            $('#eventUrl').attr('href',event.url)
+            $('#fullcalendar-modal').modal()
     }
   )
