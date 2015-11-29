@@ -14,5 +14,7 @@ class EventFormatter
     event["start"] = @object.start_time
     event["end"] = @object.end_time
     event["allDay"] = false
-
-
+    event["editable"] = true
+    event
+  end
+end
