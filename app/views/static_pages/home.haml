@@ -1,12 +1,27 @@
-.modal.fade#fullcalendar-modal{"tabindex" => "-1", "role" => "dialog"}
+.modal.fade#fullcalendar-edit-modal{"tabindex" => "-1", "role" => "dialog"}
   .modal-dialog
     .modal-content
       .modal-header
         %button.close{"type" => "button", "data-dismiss" => "modal", "aria-label" => "Close"}
           %span{"aria-hidden" => "true"}
             &times;
-        %h4.modal-title#modal-title
-      .modal-body#modal-body
+        %h4.modal-title#edit-modal-title
+      .modal-body#edit-modal-body
+        %p
+      .modal-footer
+        %button.btn.btn-default{"type" => "button", "data-dismiss" => "modal"}
+          Close
+        %button.btn.btn-primary{"type" => "button"}
+          Save changes
+.modal.fade#fullcalendar-new-modal{"tabindex" => "-1", "role" => "dialog"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"type" => "button", "data-dismiss" => "modal", "aria-label" => "Close"}
+          %span{"aria-hidden" => "true"}
+            &times;
+        %h4.modal-title#new-modal-title
+      .modal-body#new-modal-body
         %p
       .modal-footer
         %button.btn.btn-default{"type" => "button", "data-dismiss" => "modal"}

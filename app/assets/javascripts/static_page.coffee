@@ -28,9 +28,14 @@ $ ->
         right: 'month,agendaWeek,agendaDay',
       },
       eventClick:  (event, jsEvent, view) ->
-            $('#modal-title').html(event.title)
-            $('#modal-body').html(event.description)
-            $('#eventUrl').attr('href',event.url)
-            $('#fullcalendar-modal').modal()
+        $('#edit-modal-title').html(event.title)
+        $('#edit-modal-body').html(event.description)
+        $('#edit-eventUrl').attr('href',event.url)
+        $('#fullcalendar-edit-modal').modal()
+      dayClick: (date, jsEvent, view) ->
+        $('#new-modal-title').html(event.title)
+        $('#new-modal-body').html(event.description)
+        $('#edit-eventUrl').attr('href',event.url)
+        $('#fullcalendar-new-modal').modal()
     }
   )
