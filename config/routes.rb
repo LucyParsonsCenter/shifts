@@ -10,16 +10,14 @@ Rails.application.routes.draw do
     root controller: DashboardManifest::ROOT_DASHBOARD, action: :index
   end
 
-  resources :meetings
+  resources :events
   resources :collective_members
-  resources :trainees
-  resources :shifts
 
   get '/' => 'static_pages#home'
   get '/home' => 'static_pages#home'
   get '/help' => 'static_pages#help'
   get '/about' => 'static_pages#about'
-  get '/normal_shifts' => 'shifts#normal_shifts'
-  get '/training_shifts' => 'shifts#training_shifts'
-  get '/meetings_feed' => 'meetings#meetings_feed'
+  get '/normal_shifts' => 'events#normal_shifts'
+  get '/training_shifts' => 'events#training_shifts'
+  get '/meetings_feed' => 'events#meetings'
 end
