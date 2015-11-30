@@ -4,5 +4,5 @@ class Event < ActiveRecord::Base
 
   scope :meeting, -> { where(meeting: true) }
   scope :training, -> { where.not(trainee: nil) }
-  scope :normal, -> { where(trainee: nil }
+  scope :normal, -> { where(trainee: nil).where(meeting: false) }
 end
