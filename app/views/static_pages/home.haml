@@ -16,16 +16,22 @@
 .modal.fade#fullcalendar-new-modal{"tabindex" => "-1", "role" => "dialog"}
   .modal-dialog
     .modal-content
-      .modal-header
-        %button.close{"type" => "button", "data-dismiss" => "modal", "aria-label" => "Close"}
-          %span{"aria-hidden" => "true"}
-            &times;
-        %h4.modal-title#new-modal-title
-      .modal-body#new-modal-body
-        %p
-      .modal-footer
-        %button.btn.btn-default{"type" => "button", "data-dismiss" => "modal"}
-          Close
-        %button.btn.btn-primary{"type" => "button"}
-          Save changes
+      = binding.pry
+      = semantic_form_for @meeting do |f|
+        .modal-header
+          %button.close{"type" => "button", "data-dismiss" => "modal", "aria-label" => "Close"}
+            %span{"aria-hidden" => "true"}
+              &times;
+          %h4.modal-title#new-modal-title
+            New event
+        .modal-body#new-modal-body
+          = f.inputs :start_time
+          = f.inputs :end_time
+          = f.input :meeting
+          = f.input :collective_member
+          = f.input :trainee
+        .modal-footer
+          %button.btn.btn-default{"type" => "button", "data-dismiss" => "modal"}
+            Close
+          = f.action :submit, :as => :button, class: "btn btn-primary"
 #calendar
