@@ -32,6 +32,7 @@ $ ->
       select: (start, end) ->
         console.log(start)
         console.log(end)
+
       eventClick:  (event, jsEvent, view) ->
         $('#edit-modal-title').html(event.title)
         $('#edit-modal-body').html(event.description)
