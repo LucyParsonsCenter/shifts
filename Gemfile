@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.2.3'
 
+gem 'react-rails', '~> 1.5.0'
 gem 'formtastic', '~> 3.0'
 gem 'rails_12factor', group: :production
 gem 'devise'
