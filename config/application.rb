@@ -13,7 +13,11 @@ module LpcTraining
     # config.time_zone = 'Central Time (US & Canada)'
 
     config.active_record.raise_in_transactional_callbacks = true
-    config.browserify_rails.commandline_options = "-t coffeeify --extension=\".js.coffee\""
 
+    config.browserify_rails.commandline_options = [
+      '-t [ coffee-reactify --extension=".cjsx" --extension=".coffee" ]',
+      '--extension=".coffee"',
+      '--extension=".cjsx"',
+    ]
   end
 end
