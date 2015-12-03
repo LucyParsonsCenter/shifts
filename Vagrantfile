@@ -40,6 +40,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     cd /vagrant
     gem install bundler
     bundle install --full-index -j4
+
+    curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.29.0/install.sh | bash
+    . ~/.nvm/nvm.sh
+    nvm install 5.0
+    nvm use 5.0
+    nvm alias default node
     source ~/.profile
 
     bundle exec rake db:create
