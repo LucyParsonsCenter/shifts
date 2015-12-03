@@ -16,7 +16,9 @@ EventForm = React.createClass
   getDefaultProps: ->
     serverErrors: []
 
+
   render: ->
+
     <Formsy.Form
       className="event-form"
       onSubmit={this.props.onSubmit}
