@@ -30,6 +30,16 @@ EventFormVC = React.createClass
         serverErrors={EventFormStore.getServerErrors()} />
     </div>
 
-  onFormChanged: ->
+  onFormChanged: (key, value) ->
+    EventFormActions.formChanged({key: key, value: value})
+
+  onFormValid: ->
+    EventFormActions.setCanSubmit(true)
+
+  onFormInvalid: ->
+    EventFormActions.setCanSubmit(false)
+
+  onSubmit: (data) ->
+    console.log(data)
 
 module.exports = EventFormVC
