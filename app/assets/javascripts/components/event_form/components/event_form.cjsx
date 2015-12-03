@@ -16,7 +16,6 @@ EventForm = React.createClass
   getDefaultProps: ->
     serverErrors: []
 
-
   render: ->
 
     <Formsy.Form
