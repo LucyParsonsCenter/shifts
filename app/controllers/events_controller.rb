@@ -6,7 +6,7 @@ class EventsController < ApplicationController
     end_date = params[:end].to_date
     @shifts = Event.normal.where(start_time: start_date..end_date)
     respond_to do |format|
-      format.json { render json: @shifts.map { |s| EventFormatter.format(s) } }
+      format.json { render json: @shifts.map(&:format) }
     end
   end
 
@@ -15,7 +15,7 @@ class EventsController < ApplicationController
     end_date = params[:end].to_date
     @shifts = Event.training.where(start_time: start_date..end_date)
     respond_to do |format|
-      format.json { render json: @shifts.map { |s| EventFormatter.format(s) } }
+      format.json { render json: @shifts.map(&:format) }
     end
   end
 
@@ -24,7 +24,7 @@ class EventsController < ApplicationController
     end_date = params[:end].to_date
     @meetings = Event.meeting.where(start_time: start_date..end_date)
     respond_to do |format|
-      format.json { render json: @meetings.map { |s| EventFormatter.format(s) } }
+      format.json { render json: @meetings.map(&:format) }
     end
   end
 
