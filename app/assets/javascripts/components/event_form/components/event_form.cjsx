@@ -26,13 +26,13 @@ EventForm = React.createClass
       onValid={this.props.onValid}
       onInvalid={this.props.onInvalid}>
       <FormSection stepTitle="Event">
-      <Input
-        name="date"
-        type="date"
-        onChange={this.props.onchange}
-        value={this.props.formData["date"] || ""}
-        label="Date: "
-        required />
+        <Input
+          name="date"
+          type="date"
+          onChange={this.props.onchange}
+          label="Date: "
+          required />
+      </FormSection>
     </Formsy.Form>
 
 module.exports = EventForm
