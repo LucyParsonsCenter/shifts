@@ -1,4 +1,4 @@
-Alt = require('alt')
+Alt = require("alt")
 
 alt = new Alt()
 

@@ -17,11 +17,12 @@ EventForm = React.createClass
     serverErrors: []
 
   render: ->
-
     <Formsy.Form
       className="event-form"
       onSubmit={this.props.onSubmit}
       onValid={this.props.onValid}
       onInvalid={this.props.onInvalid}>
+    </Formsy.Form>
 
 
+module.exports = EventForm
