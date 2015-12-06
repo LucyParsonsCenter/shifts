@@ -1,7 +1,7 @@
 alt = require("../../shared/alt.js.coffee")
-EventFormActions = require("../actions/event_form_actions")
-EventForm = require("../components/event_form")
-EventFormStore = require("../stores/event_form_store")
+EventFormActions = require("../actions/event_form_actions.cjsx")
+EventForm = require("../components/event_form.cjsx")
+EventFormStore = require("../stores/event_form_store.cjsx")
 
 EventFormVC = React.createClass
   propTypes: ->
@@ -25,10 +25,10 @@ EventFormVC = React.createClass
         onFormChanged={this.onFormChanged}
         onValid={this.onValid}
         onInvalid={this.onInvalid}
-        formData={EventFormStore.getFormData()}
-        serverErrors={EventFormStore.getServerErrors()}
         collectiveMembers={this.collectiveMembers}
-        trainees={this.trainees} />
+        trainees={this.trainees}
+        formData={EventFormStore.getFormData()}
+        serverErrors={EventFormStore.getServerErrors()} />
     </div>
 
   onFormChanged: (key, value) ->
