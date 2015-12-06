@@ -27,6 +27,7 @@
     "coffeeify": "^1.2.0",
     "react": "~0.14.3",
     "formsy-react": "~0.17.0",
-    "formsy-react-components": "~0.6.2"
+    "formsy-react-components": "~0.6.2",
+    "babelify": "~7.2.0"
   }
 }
