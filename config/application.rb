@@ -15,7 +15,7 @@ module LpcTraining
     config.active_record.raise_in_transactional_callbacks = true
 
     config.browserify_rails.commandline_options = [
-      '-t [ coffee-reactify --extension=".cjsx" --extension=".coffee" ]',
+      '-t [ coffee-reactify --extension=".cjsx" --extension=".coffee" --extension=".js.coffee" ]',
       '--extension=".coffee"',
       '--extension=".cjsx"',
     ]
