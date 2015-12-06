@@ -34,10 +34,10 @@ EventFormVC = React.createClass
   onFormChanged: (key, value) ->
     EventFormActions.formChanged({key: key, value: value})
 
-  onFormValid: ->
+  onValid: ->
     EventFormActions.setCanSubmit(true)
 
-  onFormInvalid: ->
+  onInvalid: ->
     EventFormActions.setCanSubmit(false)
 
   onSubmit: (data) ->

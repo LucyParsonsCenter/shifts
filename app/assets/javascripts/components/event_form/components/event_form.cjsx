@@ -2,7 +2,7 @@ Formsy = require('formsy-react')
 FormsyComponent = require('formsy-react-components')
 Select = FormsyComponent.Select
 Input = FormsyComponent.Input
-React = require('react')
+Radio = FormsyComponent.RadioGroup
 
 EventForm = React.createClass
   propTypes: ->
@@ -30,9 +30,21 @@ EventForm = React.createClass
         name="date"
         type="date"
         value={this.props.formData["date"] || ""}
-        onChange={this.props.onchange}
+        onChange={this.props.onChange}
         label="Date: "
         required />
+      <Radio
+        name="eventType"
+        type="inline"
+        label="Event Type"
+        value={this.props.formData["eventType"]}
+        options={[
+            {value: '1', label: "Shift"},
+            {value: '2', label: "Training shift"},
+            {value: '3', label: "Meeting"},
+            {value: '4', label: "Event!"}
+        ]}
+        onChange={this.props.onChange} />
     </Formsy.Form>
 
 module.exports = EventForm
