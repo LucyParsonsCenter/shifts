@@ -25,8 +25,8 @@ EventFormVC = React.createClass
         onFormChanged={this.onFormChanged}
         onValid={this.onValid}
         onInvalid={this.onInvalid}
-        collectiveMembers={this.collectiveMembers}
-        trainees={this.trainees}
+        collectiveMembers={this.props.collectiveMembers}
+        trainees={this.props.trainees}
         formData={EventFormStore.getFormData()}
         serverErrors={EventFormStore.getServerErrors()} />
     </div>

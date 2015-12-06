@@ -26,12 +26,12 @@ class EventFormStore
   # public methods
 
   getCanSubmit: ->
-    this.getState.canSubmit
+    this.getState().canSubmit
 
   getFormData: ->
-    this.getState.formData
+    this.getState().formData
 
   getServerErrors: ->
-    this.getState.serverErrors
+    this.getState().serverErrors
 
 module.exports = alt.createStore(EventFormStore, "EventFormStore")

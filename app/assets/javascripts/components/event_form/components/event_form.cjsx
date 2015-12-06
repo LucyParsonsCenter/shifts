@@ -18,6 +18,7 @@ EventForm = React.createClass
 
   getDefaultProps: ->
     serverErrors: []
+    formData: {}
 
   render: ->
     <Formsy.Form
@@ -25,14 +26,13 @@ EventForm = React.createClass
       onSubmit={this.props.onSubmit}
       onValid={this.props.onValid}
       onInvalid={this.props.onInvalid}>
-      <FormSection stepTitle="Event">
-        <Input
-          name="date"
-          type="date"
-          onChange={this.props.onchange}
-          label="Date: "
-          required />
-      </FormSection>
+      <Input
+        name="date"
+        type="date"
+        value={this.props.formData["date"] || ""}
+        onChange={this.props.onchange}
+        label="Date: "
+        required />
     </Formsy.Form>
 
 module.exports = EventForm
