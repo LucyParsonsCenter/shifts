@@ -1,5 +1,5 @@
 alt = require("../../shared/alt.js.coffee")
-EventFormActions = require("../actions/event_form_actions")
+EventFormActions = require("../actions/event_form_actions.cjsx")
 
 class EventFormStore
   constructor: ->
@@ -10,21 +10,18 @@ class EventFormStore
     this.bindListeners
       handleSetCanSubmit:   EventFormActions.SET_CAN_SUBMIT
       handleFormChanged:    EventFormActions.FORM_CHANGED
-      handleSetFormState:   EventFormActions.SET_FORM_STATE
 
     this.exportPublicMethods
       getCanSubmit:     this.getCanSubmit
       getFormData:      this.getFormData
       getServerErrors:  this.getServerErrors
 
+
   handleSetCanSubmit: (state) ->
     this.canSubmit = state
 
   handleFormChanged: (newData) ->
     this.formData[newData.key] = newData.value
-
-  handleSetFormState: (data) ->
-    this.formData = data || {}
 
   # public methods
 

@@ -2,6 +2,7 @@ Formsy = require('formsy-react')
 FormsyComponent = require('formsy-react-components')
 Select = FormsyComponent.Select
 Input = FormsyComponent.Input
+React = require('react')
 
 EventForm = React.createClass
   propTypes: ->

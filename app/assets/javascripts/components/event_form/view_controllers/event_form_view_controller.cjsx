@@ -1,4 +1,4 @@
-alt = require("../../shared/alt")
+alt = require("../../shared/alt.js.coffee")
 EventFormActions = require("../actions/event_form_actions")
 EventForm = require("../components/event_form")
 EventFormStore = require("../stores/event_form_store")
