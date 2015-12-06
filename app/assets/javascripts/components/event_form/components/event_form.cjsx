@@ -6,13 +6,15 @@ React = require('react')
 
 EventForm = React.createClass
   propTypes: ->
-    canSubmit:        React.PropTypes.bool.isRequired
-    onSubmit:         React.PropTypes.func.isRequired
-    onFormChanged:    React.PropTypes.func.isRequired
-    onValid:          React.PropTypes.func.isRequired
-    onInvalid:        React.PropTypes.func.isRequired
-    formData:         React.PropTypes.object.isRequired
-    serverErrors:     React.PropTypes.array
+    canSubmit:          React.PropTypes.bool.isRequired
+    onSubmit:           React.PropTypes.func.isRequired
+    onFormChanged:      React.PropTypes.func.isRequired
+    onValid:            React.PropTypes.func.isRequired
+    onInvalid:          React.PropTypes.func.isRequired
+    formData:           React.PropTypes.object.isRequired
+    serverErrors:       React.PropTypes.array
+    collectiveMembers:  React.PropTypes.object.isRequired
+    trainees:           React.PropTypes.object.isRequired
 
   getDefaultProps: ->
     serverErrors: []

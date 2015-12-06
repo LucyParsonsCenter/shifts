@@ -5,7 +5,6 @@ EventFormStore = require("../stores/event_form_store")
 
 EventFormVC = React.createClass
   propTypes: ->
-    initialFormData:    React.PropTypes.object
     collectiveMembers:  React.PropTypes.object
     trainees:           React.PropTypes.object
 
