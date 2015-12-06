@@ -1,4 +1,4 @@
-alt = require("../../shared/alt.js.coffee")
+alt = require("../../shared/alt")
 
 class EventFormActions
   constructor: ->

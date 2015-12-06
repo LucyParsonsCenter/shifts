@@ -23,6 +23,9 @@ class EventFormStore
   handleFormChanged: (newData) ->
     this.formData[newData.key] = newData.value
 
+  handleSetFormState: (data) ->
+    this.formData = data || {}
+
   # public methods
 
   getCanSubmit: ->
