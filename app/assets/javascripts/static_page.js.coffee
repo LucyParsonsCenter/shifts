@@ -34,14 +34,13 @@ $ ->
         console.log(end)
 
       eventClick:  (event, jsEvent, view) ->
-        $('#edit-modal-title').html(event.title)
-        $('#edit-modal-body').html(event.description)
+        $('#modal-title').html(event.title)
+        $('#modal-body').html(event.description)
         $('#edit-eventUrl').attr('href',event.url)
-        $('#fullcalendar-edit-modal').modal()
+        $('#fullcalendar-modal').modal()
       dayClick: (date, jsEvent, view) ->
-        $('#new-modal-title').html(event.title)
-        $('#new-modal-body').html(event.description)
-        $('#edit-eventUrl').attr('href',event.url)
-        $('#fullcalendar-new-modal').modal()
+        $('#modal-title').html(event.title)
+        $('#modal-body').html(event.description)
+        $('#fullcalendar-modal').modal()
     }
   )
