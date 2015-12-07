@@ -59,12 +59,20 @@ EventForm = React.createClass
         onChange={this.props.onChange}
         label="End time: "
         required />
-      {this.renderCollectiveMember()}
+      {this.renderConditionalInputs()}
     </Formsy.Form>
 
   renderConditionalInputs: ->
+    eventType = this.props.formData["eventType"]
+    if eventType == '1'
+      this.renderCollectiveMember()
+    else if eventType == '2'
+      this.renderCollectiveMember()
+      this.renderTrainee
+    else if eventType == '4'
+      this.renderCollectiveMember()
 
-  renderTraineeList: ->
+  renderTrainee: ->
     <Select
       name="trainee"
       onChange={this.props.onChange}
@@ -75,7 +83,6 @@ EventForm = React.createClass
       options={this.props.collectiveMembers}
       required
     />
-
 
   renderCollectiveMember: ->
     <Select
@@ -88,7 +95,5 @@ EventForm = React.createClass
       options={this.props.collectiveMembers}
       required
     />
-
-
 
 module.exports = EventForm
