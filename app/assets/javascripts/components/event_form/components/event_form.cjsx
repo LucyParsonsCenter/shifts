@@ -31,6 +31,7 @@ EventForm = React.createClass
         type="inline"
         label="Event Type"
         value={this.props.formData["eventType"] || '1'}
+        onChange={this.props.onChange}
         options={[
             {value: '1', label: "Shift"},
             {value: '2', label: "Training shift"},

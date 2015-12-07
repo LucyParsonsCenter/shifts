@@ -21,10 +21,10 @@ EventFormVC = React.createClass
     <div id="event-form">
       <EventForm
         canSubmit={EventFormStore.getCanSubmit()}
-        onSubmit={this.onSubmit}
-        onFormChanged={this.onFormChanged}
-        onValid={this.onValid}
-        onInvalid={this.onInvalid}
+        onSubmit={this.props.onSubmit}
+        onFormChanged={this.props.onFormChanged}
+        onValid={this.props.onValid}
+        onInvalid={this.props.onInvalid}
         collectiveMembers={this.props.collectiveMembers}
         trainees={this.props.trainees}
         formData={EventFormStore.getFormData()}
