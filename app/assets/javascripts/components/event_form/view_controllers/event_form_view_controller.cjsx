@@ -1,4 +1,5 @@
 alt = require("../../shared/alt.js.coffee")
+request = require("superagent")
 EventFormActions = require("../actions/event_form_actions.cjsx")
 EventForm = require("../components/event_form.cjsx")
 EventFormStore = require("../stores/event_form_store.cjsx")
@@ -41,6 +42,13 @@ EventFormVC = React.createClass
     EventFormActions.setCanSubmit(false)
 
   onSubmit: (data) ->
-    console.log(data)
+    request
+      .post('/events/create')
+      .send(EventFormStore.getFormData())
+      .end((err, res) ->
+        if (res.ok)
+          console.log('wooo')
+        else
+          console.log('not woo'))
 
 module.exports = EventFormVC
