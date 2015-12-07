@@ -97,7 +97,7 @@ EventForm = React.createClass
 
   renderCollectiveMember: ->
     <Select
-      name="collectiveMember"
+      name="collectiveMembers"
       onChange={this.props.onFormChanged}
       value={this.props.formData["collectiveMembers"] || []}
       label="Collective Member"
