@@ -26,10 +26,15 @@ EventForm = React.createClass
       onSubmit={this.props.onSubmit}
       onValid={this.props.onValid}
       onInvalid={this.props.onInvalid}>
+      <Input
+        name="eventID"
+        id="eventIDhidden"
+        value={this.props.formData["eventID"] || ""}
+        onChange={this.props.onFormChanged} />
       <Radio
         name="eventType"
         type="inline"
-        label="Event Type"
+        label="Event Type: "
         value={this.props.formData["eventType"] || '1'}
         onChange={this.props.onFormChanged}
         options={[

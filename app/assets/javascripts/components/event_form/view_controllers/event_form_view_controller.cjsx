@@ -43,7 +43,7 @@ EventFormVC = React.createClass
 
   onSubmit: (data) ->
     request
-      .post('/events/create')
+      .post('/create_or_update_event')
       .send(EventFormStore.getFormData())
       .end((err, res) ->
         if (res.ok)

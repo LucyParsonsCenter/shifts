@@ -28,21 +28,13 @@ class EventsController < ApplicationController
     end
   end
 
-  def index
-    @events = Event.all
-  end
+  def create_or_update
+    binding.pry
 
-  def show
-  end
-
-  def new
-    @event = Event.new
-  end
-
-  def edit
   end
 
   def create
+    binding.pry
     @event = Event.new(event_params)
 
     respond_to do |format|
