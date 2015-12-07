@@ -31,33 +31,33 @@ EventForm = React.createClass
         type="inline"
         label="Event Type"
         value={this.props.formData["eventType"] || '1'}
-        onChange={this.props.onChange}
+        onChange={this.props.onFormChanged}
         options={[
             {value: '1', label: "Shift"},
             {value: '2', label: "Training shift"},
             {value: '3', label: "Meeting"},
             {value: '4', label: "Event!"}
         ]}
-        onChange={this.props.onChange} />
+        onChanged={this.props.onFormChanged} />
       <Input
         name="date"
         type="date"
         value={this.props.formData["date"] || ""}
-        onChange={this.props.onChange}
+        onChange={this.props.onFormChanged}
         label="Date: "
         required />
       <Input
         name="startTime"
         type="time"
         value={this.props.formData["startTime"] || ""}
-        onChange={this.props.onChange}
+        onChange={this.props.onFormChanged}
         label="Start time: "
         required />
       <Input
         name="time"
         type="time"
         value={this.props.formData["endTime"] || ""}
-        onChange={this.props.onChange}
+        onChange={this.props.onFormChanged}
         label="End time: "
         required />
       {this.renderConditionalInputs()}
@@ -69,14 +69,14 @@ EventForm = React.createClass
       this.renderCollectiveMember()
     else if eventType == '2'
       this.renderCollectiveMember()
-      this.renderTrainee
+      this.renderTrainee()
     else if eventType == '4'
       this.renderCollectiveMember()
 
   renderTrainee: ->
     <Select
       name="trainee"
-      onChange={this.props.onChange}
+      onChange={this.props.onFormChanged}
       value={this.props.formData["trainee"] || []}
       label="Trainee: "
       multiple
@@ -88,7 +88,7 @@ EventForm = React.createClass
   renderCollectiveMember: ->
     <Select
       name="collectiveMember"
-      onChange={this.props.onChange}
+      onChange={this.props.onFormChanged}
       value={this.props.formData["collectiveMembers"] || []}
       label="Collective Member"
       multiple
