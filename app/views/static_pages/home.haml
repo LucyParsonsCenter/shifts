@@ -7,8 +7,8 @@
             &times;
         %h4.modal-title#modal-title
       .modal-body#modal-body
-        - collective_members = CollectiveMember.all
-        - trainees = Trainee.all
+        - collective_members = CollectiveMember.all.map(&:select_format)
+        - trainees = Trainee.all.map(&:select_format)
         = react_component("EventFormVC", collectiveMembers: collective_members, trainees: trainees)
       .modal-footer
         %button.btn.btn-default{"type" => "button", "data-dismiss" => "modal"}
