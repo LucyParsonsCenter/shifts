@@ -65,13 +65,23 @@ EventForm = React.createClass
 
   renderConditionalInputs: ->
     eventType = this.props.formData["eventType"]
-    if eventType == '1'
+    if eventType == '1' or eventType == undefined
       this.renderCollectiveMember()
     else if eventType == '2'
-      this.renderCollectiveMember()
-      this.renderTrainee()
+      <div>
+        {this.renderCollectiveMember()}
+        {this.renderTrainee()}
+      </div>
     else if eventType == '4'
-      this.renderCollectiveMember()
+      <div>
+        {this.renderCollectiveMember()}
+        <Input
+          name="eventTitle"
+          value={this.props.formData["eventTitle"] || ""}
+          onChange={this.props.onFormChanged}
+          label="Event title:"
+          required />
+      </div>
 
   renderTrainee: ->
     <Select
