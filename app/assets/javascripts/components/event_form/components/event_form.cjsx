@@ -61,6 +61,7 @@ EventForm = React.createClass
         label="End time: "
         required />
       {this.renderConditionalInputs()}
+      <input className="btn btn-primary" type="submit" defaultValue="Submit" />
     </Formsy.Form>
 
   renderConditionalInputs: ->

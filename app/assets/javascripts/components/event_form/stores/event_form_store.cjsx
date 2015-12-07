@@ -16,7 +16,6 @@ class EventFormStore
       getFormData:      this.getFormData
       getServerErrors:  this.getServerErrors
 
-
   handleSetCanSubmit: (state) ->
     this.canSubmit = state
 
