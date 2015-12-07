@@ -26,18 +26,11 @@ EventForm = React.createClass
       onSubmit={this.props.onSubmit}
       onValid={this.props.onValid}
       onInvalid={this.props.onInvalid}>
-      <Input
-        name="date"
-        type="date"
-        value={this.props.formData["date"] || ""}
-        onChange={this.props.onChange}
-        label="Date: "
-        required />
       <Radio
         name="eventType"
         type="inline"
         label="Event Type"
-        value={this.props.formData["eventType"]}
+        value={this.props.formData["eventType"] || '1'}
         options={[
             {value: '1', label: "Shift"},
             {value: '2', label: "Training shift"},
@@ -45,6 +38,57 @@ EventForm = React.createClass
             {value: '4', label: "Event!"}
         ]}
         onChange={this.props.onChange} />
+      <Input
+        name="date"
+        type="date"
+        value={this.props.formData["date"] || ""}
+        onChange={this.props.onChange}
+        label="Date: "
+        required />
+      <Input
+        name="startTime"
+        type="time"
+        value={this.props.formData["startTime"] || ""}
+        onChange={this.props.onChange}
+        label="Start time: "
+        required />
+      <Input
+        name="time"
+        type="time"
+        value={this.props.formData["endTime"] || ""}
+        onChange={this.props.onChange}
+        label="End time: "
+        required />
+      {this.renderCollectiveMember()}
     </Formsy.Form>
+
+  renderConditionalInputs: ->
+
+  renderTraineeList: ->
+    <Select
+      name="trainee"
+      onChange={this.props.onChange}
+      value={this.props.formData["trainee"] || []}
+      label="Trainee: "
+      multiple
+      placeholder="Pick a trainee!"
+      options={this.props.collectiveMembers}
+      required
+    />
+
+
+  renderCollectiveMember: ->
+    <Select
+      name="collectiveMember"
+      onChange={this.props.onChange}
+      value={this.props.formData["collectiveMembers"] || []}
+      label="Collective Member"
+      multiple
+      placeholder="Pick a collective member (or two!)"
+      options={this.props.collectiveMembers}
+      required
+    />
+
+
 
 module.exports = EventForm
