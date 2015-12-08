@@ -31,6 +31,7 @@
     "moment": "^2.10.6",
     "react": "~0.14.3",
     "react-dom": "^0.14.3",
-    "superagent": "^1.5.0"
+    "superagent": "^1.5.0",
+    "superagent-csrf": "^1.0.0"
   }
 }
