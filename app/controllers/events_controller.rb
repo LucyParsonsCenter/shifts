@@ -31,12 +31,30 @@ class EventsController < ApplicationController
   def create_or_update
     binding.pry
     event = Event.new
+
+    date = params["date"].to_date
+    start_time = params["startTime"].to_time
+    end_time = params["endTime"].to_time
+    [start_time, end_time].each do |t|
+      t.year = date.year
+      t.day = date.day
+      t.month = date.month
+    end
+    event.start_time = start_time
+    event.end_time = end_time
+
     event_type = event_types(params["eventType"])
     if event_type == "Shift"
-      collective_member
+      params["collectiveMembers"].map do |m|
+        event.collective_member << CollectiveMember.find(m.to_i)
+      end
     elsif event_type == "Training shift"
-      event.trainee = Trainee.find(params(trainee))
-
+      params["collectiveMembers"].map do |m|
+        event.collective_member << CollectiveMember.find(m.to_i)
+      end
+      params["trainee"].map do |t|
+        event.trainee << Trainee.find(t.to_i)
+      end
     elsif event_type == "Meeting"
       event.meeting = true
     elsif event_type == "Event!"

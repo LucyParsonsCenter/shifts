@@ -59,7 +59,7 @@ EventForm = React.createClass
         label="Start time: "
         required />
       <Input
-        name="time"
+        name="endTime"
         type="time"
         value={this.props.formData["endTime"] || ""}
         onChange={this.props.onFormChanged}
