@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
-  belongs_to :collective_member
-  belongs_to :trainee
+  has_many :collective_member
+  has_many :trainee
 
   scope :meeting, -> { where(meeting: true) }
   scope :training, -> { where.not(trainee: nil) }
