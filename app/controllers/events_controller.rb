@@ -58,6 +58,9 @@ class EventsController < ApplicationController
     elsif event_type == "Meeting"
       event.meeting = true
     elsif event_type == "Event!"
+      params["collectiveMembers"].map do |m|
+        event.collective_member << CollectiveMember.find(m.to_i)
+      end
     end
   end
 
