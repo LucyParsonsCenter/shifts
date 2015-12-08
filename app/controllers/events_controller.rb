@@ -30,34 +30,26 @@ class EventsController < ApplicationController
 
   def create_or_update
     binding.pry
+    event = Event.new
+    event_type = event_types(params["eventType"])
+    if event_type == "Shift"
+      collective_member
+    elsif event_type == "Training shift"
+      event.trainee = Trainee.find(params(trainee))
 
-  end
-
-  def create
-    binding.pry
-    @event = Event.new(event_params)
-
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
+    elsif event_type == "Meeting"
+      event.meeting = true
+    elsif event_type == "Event!"
     end
   end
 
-  def update
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event }
-      else
-        format.html { render :edit }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
-    end
+  def event_types(num)
+    types = { '1' => "Shift",
+      '2' => "Training shift",
+      '3' => "Meeting",
+      '4' => "Event!"
+    }
+    types[num]
   end
 
   def destroy
