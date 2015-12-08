@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151130023057) do
+ActiveRecord::Schema.define(version: 20151208014431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,16 +26,31 @@ ActiveRecord::Schema.define(version: 20151130023057) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "events", force: :cascade do |t|
-    t.integer  "collective_member_id"
-    t.integer  "trainee_id"
-    t.boolean  "meeting",              default: false
-    t.text     "notes"
-    t.datetime "start_time",                           null: false
-    t.datetime "end_time",                             null: false
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+  create_table "collective_members_events", id: false, force: :cascade do |t|
+    t.integer "event_id",             null: false
+    t.integer "collective_member_id", null: false
   end
+
+  add_index "collective_members_events", ["collective_member_id", "event_id"], name: "why", using: :btree
+  add_index "collective_members_events", ["event_id", "collective_member_id"], name: "fooop", using: :btree
+
+  create_table "events", force: :cascade do |t|
+    t.integer  "trainee_id"
+    t.boolean  "meeting",    default: false
+    t.text     "notes"
+    t.datetime "start_time",                 null: false
+    t.datetime "end_time",                   null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "events_trainees", id: false, force: :cascade do |t|
+    t.integer "event_id",   null: false
+    t.integer "trainee_id", null: false
+  end
+
+  add_index "events_trainees", ["event_id", "trainee_id"], name: "flasdf", using: :btree
+  add_index "events_trainees", ["trainee_id", "event_id"], name: "foobar", using: :btree
 
   create_table "trainees", force: :cascade do |t|
     t.text     "first_name"
