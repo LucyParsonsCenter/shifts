@@ -1,5 +1,7 @@
 alt = require("../../shared/alt.js.coffee")
 request = require("superagent")
+require('superagent-csrf')(request)
+token = window._csrf
 EventFormActions = require("../actions/event_form_actions.cjsx")
 EventForm = require("../components/event_form.cjsx")
 EventFormStore = require("../stores/event_form_store.cjsx")
@@ -45,6 +47,9 @@ EventFormVC = React.createClass
     request
       .post('/create_or_update_event')
       .send(EventFormStore.getFormData())
+      .csrf(token)
+      .set('Accept', 'application/json')
+      .withCredentials()
       .end((err, res) ->
         if (res.ok)
           console.log('wooo')
