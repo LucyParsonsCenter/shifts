@@ -18,17 +18,34 @@ end
 
 def random_normal_shift
   shift_time = random_date_and_time
-  Event.create(collective_member: random_collective_member, start_time: shift_time[:start], end_time: shift_time[:end])
+  event = Event.create(start_time: shift_time[:start], end_time: shift_time[:end])
+  event.collective_members << random_collective_member
 end
 
 def random_training_shift
   shift_time = random_date_and_time
-  Event.create(collective_member: random_collective_member, start_time: shift_time[:start], end_time: shift_time[:end], trainee: random_trainee)
+  event = Event.create(start_time: shift_time[:start], end_time: shift_time[:end])
+  event.collective_members << random_collective_member
+  event.trainees << random_trainee
+
+  case rand(4)
+  when 1
+    event.collective_members << random_collective_member
+  when 2
+    event.trainees << random_trainee
+  end
 end
 
 def random_meeting
   shift_time = random_date_and_time
-  Event.create(start_time: shift_time[:start], end_time: shift_time[:end], meeting: true)
+  event = Event.create(start_time: shift_time[:start], end_time: shift_time[:end], meeting: true)
+  event.collective_members << random_collective_member
+  case rand(4)
+  when 1
+    event.collective_members << random_collective_member
+  when 2
+    event.trainees << random_trainee
+  end
 end
 
 1.upto 100 do
