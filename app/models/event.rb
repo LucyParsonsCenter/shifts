@@ -3,8 +3,8 @@ class Event < ActiveRecord::Base
   has_and_belongs_to_many :trainees
 
   scope :meeting, -> { where(meeting: true) }
-  scope :training, -> { where.joins(:trainee) }
-  scope :normal, -> { where(trainee_id: nil).where(meeting: false) }
+  scope :training, -> { joins(:trainees) }
+  scope :normal, -> { joins(:collective_members).where.not(id: Event.training.select(:id)) }
 
   def format
     event = Hash.new
