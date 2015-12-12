@@ -4,6 +4,7 @@ require('superagent-csrf')(request)
 HomePageActions = require("../actions/event_form_actions.cjsx")
 EventForm = require("../components/event_form.cjsx")
 HomePageStore = require("../stores/event_form_store.cjsx")
+Calendar = require("../components/calendar.cjsx")
 
 HomePageVC = React.createClass
   propTypes: ->
@@ -20,6 +21,9 @@ HomePageVC = React.createClass
     HomePageStore.unlisten(this.onChange)
 
   render: ->
+    <Calendar />
+
+  renderForm: ->
     <div id="event-form">
       <EventForm
         canSubmit={EventFormStore.getCanSubmit()}
