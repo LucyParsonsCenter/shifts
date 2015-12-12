@@ -1,6 +1,6 @@
 class Event < ActiveRecord::Base
-  has_many :collective_members
-  has_many :trainees
+  has_and_belongs_to_many :collective_members
+  has_and_belongs_to_many :trainees
 
   scope :meeting, -> { where(meeting: true) }
   scope :training, -> { where.not(trainee_id: nil) }
@@ -11,7 +11,7 @@ class Event < ActiveRecord::Base
     if self.meeting
       event["title"] = "Collective Meeting"
     else
-      event["title"] = self.collective_member.first_name
+      event["title"] = self.collective_members.first.try(:first_name)
     end
     event["start"] = self.start_time
     event["end"] = self.end_time
