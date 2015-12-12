@@ -1,7 +1,7 @@
 alt = require("../../shared/alt.js.coffee")
 EventFormActions = require("../actions/event_form_actions.cjsx")
 
-class EventFormStore
+class HomeStore
   constructor: ->
     this.formData = {}
     this.canSubmit = false
