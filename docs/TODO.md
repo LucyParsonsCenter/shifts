@@ -1,10 +1,11 @@
 #Not yet started: 
 
 * require admin approval for new account registrations
+* make the colors not-ugly on the calendar
+* wire up calendar jquery to the react form (???)
 
 #In progress:
 
-* write react components for editing events
 * build out calendar functionality
 * write some documentation or help page kind of thing
 
@@ -20,3 +21,5 @@
 * add authentication (devise)
 * added fullcalendar
 * add a shift model
+* fix event modeling (allow multiple trainees and collective members)
+* write react component for editing events
