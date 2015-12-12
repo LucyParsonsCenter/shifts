@@ -12,4 +12,4 @@
 #= require_tree .
 
 window.React = require("react")
-window.EventFormVC = require("../components/event_form/view_controllers/event_form_view_controller.cjsx")
+window.HomePageVC = require("../components/event_form/view_controllers/event_form_view_controller.cjsx")

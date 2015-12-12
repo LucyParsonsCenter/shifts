@@ -9,7 +9,7 @@
       .modal-body#modal-body
         - collective_members = CollectiveMember.all.map(&:select_format)
         - trainees = Trainee.all.map(&:select_format)
-        = react_component("EventFormVC", collectiveMembers: collective_members, trainees: trainees)
+        = react_component("HomePageVC", collectiveMembers: collective_members, trainees: trainees)
       .modal-footer
         %button.btn.btn-default{"type" => "button", "data-dismiss" => "modal"}
           Close
