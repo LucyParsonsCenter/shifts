@@ -1,6 +1,6 @@
 alt = require("../../shared/alt.js.coffee")
 
-class EventFormActions
+class HomePageActions
   constructor: ->
     this.generateActions(
       'setCanSubmit',
@@ -8,4 +8,4 @@ class EventFormActions
       'setFormState'
     )
 
-module.exports = alt.createActions(EventFormActions)
+module.exports = alt.createActions(HomePageActions)

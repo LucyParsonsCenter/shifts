@@ -1,15 +1,15 @@
 alt = require("../../shared/alt.js.coffee")
-EventFormActions = require("../actions/event_form_actions.cjsx")
+HomePageActions = require("../actions/home_page_actions.cjsx")
 
-class HomeStore
+class HomePageStore
   constructor: ->
     this.formData = {}
     this.canSubmit = false
     this.serverErrors = []
 
     this.bindListeners
-      handleSetCanSubmit:   EventFormActions.SET_CAN_SUBMIT
-      handleFormChanged:    EventFormActions.FORM_CHANGED
+      handleSetCanSubmit:   HomePageActions.SET_CAN_SUBMIT
+      handleFormChanged:    HomePageActions.FORM_CHANGED
 
     this.exportPublicMethods
       getCanSubmit:     this.getCanSubmit
@@ -33,4 +33,4 @@ class HomeStore
   getServerErrors: ->
     this.getState().serverErrors
 
-module.exports = alt.createStore(EventFormStore, "EventFormStore")
+module.exports = alt.createStore(HomePageStore, "HomePageStore")

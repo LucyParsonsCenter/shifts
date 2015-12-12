@@ -1,11 +1,11 @@
 alt = require("../../shared/alt.js.coffee")
 request = require("superagent")
 require('superagent-csrf')(request)
-EventFormActions = require("../actions/event_form_actions.cjsx")
+HomePageActions = require("../actions/event_form_actions.cjsx")
 EventForm = require("../components/event_form.cjsx")
-EventFormStore = require("../stores/event_form_store.cjsx")
+HomePageStore = require("../stores/event_form_store.cjsx")
 
-EventFormVC = React.createClass
+HomePageVC = React.createClass
   propTypes: ->
     collectiveMembers:  React.PropTypes.object
     trainees:           React.PropTypes.object
@@ -14,10 +14,10 @@ EventFormVC = React.createClass
     this.forceUpdate()
 
   componentWillMount: ->
-    EventFormStore.listen(this.onChange)
+    HomePageStore.listen(this.onChange)
 
   componentWillUnmount: ->
-    EventFormStore.unlisten(this.onChange)
+    HomePageStore.unlisten(this.onChange)
 
   render: ->
     <div id="event-form">
@@ -34,13 +34,13 @@ EventFormVC = React.createClass
     </div>
 
   onFormChanged: (key, value) ->
-    EventFormActions.formChanged({key: key, value: value})
+    HomePageActions.formChanged({key: key, value: value})
 
   onValid: ->
-    EventFormActions.setCanSubmit(true)
+    HomePageActions.setCanSubmit(true)
 
   onInvalid: ->
-    EventFormActions.setCanSubmit(false)
+    HomePageActions.setCanSubmit(false)
 
   onSubmit: (data) ->
     $.ajax(
@@ -53,4 +53,4 @@ EventFormVC = React.createClass
         console.log(errorThrown)
     )
 
-module.exports = EventFormVC
+module.exports = HomePageVC
