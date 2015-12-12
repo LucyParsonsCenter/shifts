@@ -3,7 +3,7 @@ class Event < ActiveRecord::Base
   has_and_belongs_to_many :trainees
 
   scope :meeting, -> { where(meeting: true) }
-  scope :training, -> { where.not(trainee_id: nil) }
+  scope :training, -> { where.joins(:trainee) }
   scope :normal, -> { where(trainee_id: nil).where(meeting: false) }
 
   def format
