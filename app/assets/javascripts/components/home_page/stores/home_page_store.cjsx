@@ -3,34 +3,34 @@ HomePageActions = require("../actions/home_page_actions.cjsx")
 
 class HomePageStore
   constructor: ->
-    this.formData = {}
-    this.canSubmit = false
+    this.collectiveMembers = {}
+    this.trainees = {}
     this.serverErrors = []
 
     this.bindListeners
-      handleSetCanSubmit:   HomePageActions.SET_CAN_SUBMIT
-      handleFormChanged:    HomePageActions.FORM_CHANGED
+      handleSetTrainees:          HomePageActions.SET_TRAINEES
+      handleSetCollectiveMembers: HomePageActions.SET_COLLECTIVE_MEMBERS
 
     this.exportPublicMethods
-      getCanSubmit:     this.getCanSubmit
-      getFormData:      this.getFormData
-      getServerErrors:  this.getServerErrors
+      getServerErrors:        this.getServerErrors
+      getTrainees:            this.getTrainees
+      getCollectiveMembers:   this.getCollectiveMembers
 
-  handleSetCanSubmit: (state) ->
-    this.canSubmit = state
+  handleSetCollectiveMembers: (data) ->
+    this.collectiveMembers = data
 
-  handleFormChanged: (newData) ->
-    this.formData[newData.key] = newData.value
+  handleSetTrainees: (data) ->
+    this.trainees = data
 
   # public methods
 
-  getCanSubmit: ->
-    this.getState().canSubmit
-
-  getFormData: ->
-    this.getState().formData
-
   getServerErrors: ->
     this.getState().serverErrors
+
+  getTrainees: ->
+    this.getState().trainees
+
+  getCollectiveMembers: ->
+    this.getState().collectiveMembers
 
 module.exports = alt.createStore(HomePageStore, "HomePageStore")

@@ -15,36 +15,30 @@ HomePageVC = React.createClass
     this.forceUpdate()
 
   componentWillMount: ->
+    HomePageActions.setTrainees(this.props.trainees)
+    HomePageActions.setCollectiveMembers(this.props.collectiveMembers)
     HomePageStore.listen(this.onChange)
 
   componentWillUnmount: ->
     HomePageStore.unlisten(this.onChange)
 
   render: ->
-    <Calendar />
+    <Calendar
+      events={[{
+        "title": "Some Event",
+        "start": new Date(2015, 3, 9, 0, 0, 0),
+        "end": new Date(2015, 3, 9, 0, 0, 0)
+      }]}
+    />
 
   renderForm: ->
     <div id="event-form">
       <EventForm
-        canSubmit={EventFormStore.getCanSubmit()}
         onSubmit={this.onSubmit}
-        onFormChanged={this.onFormChanged}
-        onValid={this.onValid}
-        onInvalid={this.onInvalid}
         collectiveMembers={this.props.collectiveMembers}
         trainees={this.props.trainees}
-        formData={EventFormStore.getFormData()}
-        serverErrors={EventFormStore.getServerErrors()} />
+        serverErrors={HomePageStore.getServerErrors()} />
     </div>
-
-  onFormChanged: (key, value) ->
-    HomePageActions.formChanged({key: key, value: value})
-
-  onValid: ->
-    HomePageActions.setCanSubmit(true)
-
-  onInvalid: ->
-    HomePageActions.setCanSubmit(false)
 
   onSubmit: (data) ->
     $.ajax(

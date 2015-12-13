@@ -3,9 +3,8 @@ alt = require("../../shared/alt.js.coffee")
 class HomePageActions
   constructor: ->
     this.generateActions(
-      'setCanSubmit',
-      'formChanged',
-      'setFormState'
+      'setTrainees',
+      'setCollectiveMembers'
     )
 
 module.exports = alt.createActions(HomePageActions)
