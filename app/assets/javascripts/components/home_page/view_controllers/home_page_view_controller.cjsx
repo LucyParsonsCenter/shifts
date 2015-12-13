@@ -1,9 +1,9 @@
 alt = require("../../shared/alt.js.coffee")
 request = require("superagent")
 require('superagent-csrf')(request)
-HomePageActions = require("../actions/event_form_actions.cjsx")
+HomePageActions = require("../actions/home_page_actions.cjsx")
 EventForm = require("../components/event_form.cjsx")
-HomePageStore = require("../stores/event_form_store.cjsx")
+HomePageStore = require("../stores/home_page_store.cjsx")
 Calendar = require("../components/calendar.cjsx")
 
 HomePageVC = React.createClass

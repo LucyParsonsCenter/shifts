@@ -4,7 +4,10 @@
 #= require bootstrap-sprockets
 #= require moment
 #= require fullcalendar
+#= require react
+#= require react_ujs
+#= require components
 #= require_tree .
 
 window.React = require("react")
-window.EventFormVC = require("../components/event_form/view_controllers/event_form_view_controller.cjsx")
+window.HomePageVC = require("./components/home_page/view_controllers/home_page_view_controller.cjsx")
