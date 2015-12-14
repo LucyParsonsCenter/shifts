@@ -37,6 +37,7 @@ EventForm = React.createClass
       <Radio
         name="eventType"
         type="inline"
+        id="eventType"
         label="Event Type: "
         value={this.props.formData["eventType"] || '1'}
         onChange={this.props.onFormChanged}
@@ -50,6 +51,7 @@ EventForm = React.createClass
       <Input
         name="date"
         type="date"
+        id="eventDate"
         value={this.props.formData["date"] || ""}
         onChange={this.props.onFormChanged}
         label="Date: "
@@ -57,6 +59,7 @@ EventForm = React.createClass
       <Input
         name="startTime"
         type="time"
+        id="eventStartTime"
         value={this.props.formData["startTime"] || ""}
         onChange={this.props.onFormChanged}
         label="Start time: "
@@ -64,6 +67,7 @@ EventForm = React.createClass
       <Input
         name="endTime"
         type="time"
+        id="eventEndTime"
         value={this.props.formData["endTime"] || ""}
         onChange={this.props.onFormChanged}
         label="End time: "
@@ -94,9 +98,10 @@ EventForm = React.createClass
 
   renderTrainee: ->
     <Select
-      name="trainee"
+      name="trainees"
+      id="trainees"
       onChange={this.props.onFormChanged}
-      value={this.props.formData["trainee"] || []}
+      value={this.props.formData["trainees"] || []}
       label="Trainee: "
       multiple
       placeholder="Pick a trainee!"
@@ -107,6 +112,7 @@ EventForm = React.createClass
   renderCollectiveMember: ->
     <Select
       name="collectiveMembers"
+      id="collectiveMembers"
       onChange={this.props.onFormChanged}
       value={this.props.formData["collectiveMembers"] || []}
       label="Collective Member"
