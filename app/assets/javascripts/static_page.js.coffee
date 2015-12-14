@@ -29,15 +29,18 @@ $ ->
       },
       selectable: true,
       selectHelper: true,
+
       select: (start, end) ->
         console.log(start)
         console.log(end)
 
       eventClick:  (event, jsEvent, view) ->
-        $('#modal-title').html(event.title)
-        $('#modal-body').html(event.description)
-        $('#edit-eventUrl').attr('href',event.url)
+        eventNode = document.getElementById('eventID')
+        eventNode.value = event.id
+        event = new Event('input', { bubbles: true })
+        eventNode.dispatchEvent(event)
         $('#fullcalendar-modal').modal()
+
       dayClick: (date, jsEvent, view) ->
         $('#modal-title').html(event.title)
         $('#modal-body').html(event.description)

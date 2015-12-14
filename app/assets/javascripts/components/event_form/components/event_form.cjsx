@@ -30,7 +30,7 @@ EventForm = React.createClass
       <ToggleDisplay show=false>
         <Input
           name="eventID"
-          id="eventIDhidden"
+          id="eventID"
           value={this.props.formData["eventID"] || ""}
           onChange={this.props.onFormChanged} />
       </ToggleDisplay>
@@ -90,6 +90,7 @@ EventForm = React.createClass
         {this.renderCollectiveMember()}
         <Input
           name="eventTitle"
+          id="eventTitle"
           value={this.props.formData["eventTitle"] || ""}
           onChange={this.props.onFormChanged}
           label="Event title:"
