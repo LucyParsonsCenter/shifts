@@ -17,6 +17,7 @@ class Event < ActiveRecord::Base
     event["end"] = self.end_time
     event["allDay"] = false
     event["editable"] = true
+    event["id"] = self.id
     event
   end
 end

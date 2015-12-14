@@ -10,6 +10,7 @@ class EventFormStore
     this.bindListeners
       handleSetCanSubmit:   EventFormActions.SET_CAN_SUBMIT
       handleFormChanged:    EventFormActions.FORM_CHANGED
+      handleIdChanged:      EventFormActions.ID_CHANGED
 
     this.exportPublicMethods
       getCanSubmit:     this.getCanSubmit
@@ -21,6 +22,10 @@ class EventFormStore
 
   handleFormChanged: (newData) ->
     this.formData[newData.key] = newData.value
+
+  handleIdChanged: (id) ->
+    console.log(id)
+    this.formData["eventID"] = id
 
   # public methods
 

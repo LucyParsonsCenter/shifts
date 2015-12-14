@@ -27,6 +27,7 @@ EventFormVC = React.createClass
         onFormChanged={this.onFormChanged}
         onValid={this.onValid}
         onInvalid={this.onInvalid}
+        onIdChanged={this.onIdChanged}
         collectiveMembers={this.props.collectiveMembers}
         trainees={this.props.trainees}
         formData={EventFormStore.getFormData()}
@@ -35,6 +36,9 @@ EventFormVC = React.createClass
 
   onFormChanged: (key, value) ->
     EventFormActions.formChanged({key: key, value: value})
+
+  onIdChanged: (key, value) ->
+    EventFormActions.idChanged(value)
 
   onValid: ->
     EventFormActions.setCanSubmit(true)

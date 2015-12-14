@@ -5,7 +5,8 @@ class EventFormActions
     this.generateActions(
       'setCanSubmit',
       'formChanged',
-      'setFormState'
+      'setFormState',
+      'idChanged'
     )
 
 module.exports = alt.createActions(EventFormActions)
