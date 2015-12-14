@@ -3,6 +3,7 @@ FormsyComponent = require('formsy-react-components')
 Select = FormsyComponent.Select
 Input = FormsyComponent.Input
 Radio = FormsyComponent.RadioGroup
+ToggleDisplay = require('react-toggle-display')
 
 EventForm = React.createClass
   propTypes: ->
@@ -26,11 +27,13 @@ EventForm = React.createClass
       onSubmit={this.props.onSubmit}
       onValid={this.props.onValid}
       onInvalid={this.props.onInvalid}>
-      <Input
-        name="eventID"
-        id="eventIDhidden"
-        value={this.props.formData["eventID"] || ""}
-        onChange={this.props.onFormChanged} />
+      <ToggleDisplay show=false>
+        <Input
+          name="eventID"
+          id="eventIDhidden"
+          value={this.props.formData["eventID"] || ""}
+          onChange={this.props.onFormChanged} />
+      </ToggleDisplay>
       <Radio
         name="eventType"
         type="inline"
