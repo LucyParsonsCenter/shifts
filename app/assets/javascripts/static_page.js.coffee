@@ -37,8 +37,8 @@ $ ->
       eventClick:  (event, jsEvent, view) ->
         eventNode = document.getElementById('eventID')
         eventNode.value = event.id
-        event = new Event('input', { bubbles: true })
-        eventNode.dispatchEvent(event)
+        eventToBubble = new Event('input', { bubbles: true })
+        eventNode.dispatchEvent(eventToBubble)
         $('#fullcalendar-modal').modal()
 
       dayClick: (date, jsEvent, view) ->
