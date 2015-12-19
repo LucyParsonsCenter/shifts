@@ -11,6 +11,7 @@ class EventFormStore
       handleSetCanSubmit:   EventFormActions.SET_CAN_SUBMIT
       handleFormChanged:    EventFormActions.FORM_CHANGED
       handleIdChanged:      EventFormActions.ID_CHANGED
+      handleClearFormData:  EventFormActions.CLEAR_FORM_DATA
 
     this.exportPublicMethods
       getCanSubmit:     this.getCanSubmit
@@ -19,6 +20,9 @@ class EventFormStore
 
   handleSetCanSubmit: (state) ->
     this.canSubmit = state
+
+  handleClearFormData: ->
+    this.formData = {}
 
   handleFormChanged: (newData) ->
     this.formData[newData.key] = newData.value

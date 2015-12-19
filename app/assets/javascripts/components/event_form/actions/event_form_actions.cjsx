@@ -6,7 +6,8 @@ class EventFormActions
       'setCanSubmit',
       'formChanged',
       'setFormState',
-      'idChanged'
+      'idChanged',
+      'clearFormData'
     )
 
 module.exports = alt.createActions(EventFormActions)
