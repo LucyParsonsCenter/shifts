@@ -29,38 +29,42 @@ class EventsController < ApplicationController
   end
 
   def create_or_update
-    binding.pry
-    event = Event.new
-
-    date = params["date"].to_date
-    start_time = params["startTime"].to_time
-    end_time = params["endTime"].to_time
-    [start_time, end_time].each do |t|
-      t.year = date.year
-      t.day = date.day
-      t.month = date.month
+    if params.include? "eventID"
+      @event = Event.find_by_id(params["eventID"].to_i)
+      @event.collective_members = []
+      @event.trainees = []
+    else
+      @event = Event.new
     end
-    event.start_time = start_time
-    event.end_time = end_time
+    @event.start_time = DateTime.parse("#{params["date"]}T#{params["startTime"]}")
+    @event.end_time = DateTime.parse("#{params["date"]}T#{params["endTime"]}")
 
-    event_type = event_types(params["eventType"])
-    if event_type == "Shift"
+    case event_types(params["eventType"])
+    when "Shift"
       params["collectiveMembers"].map do |m|
-        event.collective_member << CollectiveMember.find(m.to_i)
+        @event.collective_members << CollectiveMember.find(m.to_i)
       end
-    elsif event_type == "Training shift"
+    when "Training shift"
       params["collectiveMembers"].map do |m|
-        event.collective_member << CollectiveMember.find(m.to_i)
+        @event.collective_members << CollectiveMember.find(m.to_i)
       end
       params["trainee"].map do |t|
-        event.trainee << Trainee.find(t.to_i)
+        @event.trainees << Trainee.find(t.to_i)
       end
-    elsif event_type == "Meeting"
-      event.meeting = true
-    elsif event_type == "Event!"
+    when "Meeting"
+      @event.meeting = true
+    when "Event!"
       params["collectiveMembers"].map do |m|
-        event.collective_member << CollectiveMember.find(m.to_i)
+        @event.collective_members << CollectiveMember.find(m.to_i)
       end
+    end
+
+    begin
+      binding.pry
+      @event.save!
+      render json: ["record saved correctly!"], status: 200
+    rescue ActiveRecord::RecordInvalid => err
+      render json: ["Something didn't work out correctly: #{err}"], status: 422
     end
   end
 
