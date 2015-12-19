@@ -47,7 +47,7 @@ $ ->
           startNode.value = start.format('HH:mm')
           startNode.dispatchEvent(eventToBubble)
           endNode = document.getElementById('endHack')
-          endNode.value = start.format('HH:mm')
+          endNode.value = end.format('HH:mm')
           endNode.dispatchEvent(eventToBubble)
 
         $('#fullcalendar-modal').modal()
@@ -58,19 +58,5 @@ $ ->
         eventToBubble = new Event('input', { bubbles: true })
         eventNode.dispatchEvent(eventToBubble)
         $('#fullcalendar-modal').modal()
-
-      # dayClick: (date, jsEvent, view) ->
-      #   console.log("day")
-
-      #   eventNode = document.getElementById('eventID')
-      #   eventNode.value = ""
-      #   eventToBubble = new Event('input', { bubbles: true })
-      #   eventNode.dispatchEvent(eventToBubble)
-
-
-      #   eventDateHack = document.getElementById('dateHack')
-      #   eventDateHack.value = date.format('YYYY-MM-DD')
-      #   eventDateHack.dispatchEvent(eventToBubble)
-      #   $('#fullcalendar-modal').modal()
     }
   )

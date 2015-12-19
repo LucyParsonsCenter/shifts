@@ -20,8 +20,6 @@ class EventFormStore
       getServerErrors:  this.getServerErrors
 
   handleDateHack: (date) ->
-    console.log(date)
-
     switch date[0]
       when "dateHack"
         this.formData["date"] = date[1]
