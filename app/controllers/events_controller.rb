@@ -29,12 +29,12 @@ class EventsController < ApplicationController
   end
 
   def create_or_update
-    if params.include? "eventID"
+    if params["eventID"] == ""
+      @event = Event.new
+    else
       @event = Event.find_by_id(params["eventID"].to_i)
       @event.collective_members = []
       @event.trainees = []
-    else
-      @event = Event.new
     end
     @event.start_time = DateTime.parse("#{params["date"]}T#{params["startTime"]}")
     @event.end_time = DateTime.parse("#{params["date"]}T#{params["endTime"]}")
@@ -60,7 +60,6 @@ class EventsController < ApplicationController
     end
 
     begin
-      binding.pry
       @event.save!
       render json: ["record saved correctly!"], status: 200
     rescue ActiveRecord::RecordInvalid => err

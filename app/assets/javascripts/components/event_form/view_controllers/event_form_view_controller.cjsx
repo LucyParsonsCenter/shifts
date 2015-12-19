@@ -52,8 +52,8 @@ EventFormVC = React.createClass
       type: "POST"
       data: data
       success: (data, textStatus, jqXHR) ->
+        $('#fullcalendar-modal').modal('hide')
         EventFormActions.clearFormData()
-        $.('#fullcalendar-modal').modal()
       error: (jqXHR, textStatus, errorThrown) ->
         console.log(errorThrown)
     )
