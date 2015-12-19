@@ -23,6 +23,7 @@ EventFormVC = React.createClass
     <div id="event-form">
       <EventForm
         canSubmit={EventFormStore.getCanSubmit()}
+        onDateHack={EventFormActions.dateHack}
         onSubmit={this.onSubmit}
         onFormChanged={this.onFormChanged}
         onValid={this.onValid}

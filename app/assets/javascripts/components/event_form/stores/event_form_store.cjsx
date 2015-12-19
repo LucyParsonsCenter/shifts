@@ -12,11 +12,23 @@ class EventFormStore
       handleFormChanged:    EventFormActions.FORM_CHANGED
       handleIdChanged:      EventFormActions.ID_CHANGED
       handleClearFormData:  EventFormActions.CLEAR_FORM_DATA
+      handleDateHack:       EventFormActions.DATE_HACK
 
     this.exportPublicMethods
       getCanSubmit:     this.getCanSubmit
       getFormData:      this.getFormData
       getServerErrors:  this.getServerErrors
+
+  handleDateHack: (date) ->
+    console.log(date)
+
+    switch date[0]
+      when "dateHack"
+        this.formData["date"] = date[1]
+      when "startHack"
+        this.formData["startTime"] = date[1]
+      when "endHack"
+        this.formData["endTime"] = date[1]
 
   handleSetCanSubmit: (state) ->
     this.canSubmit = state
@@ -28,7 +40,7 @@ class EventFormStore
     this.formData[newData.key] = newData.value
 
   handleIdChanged: (id) ->
-    console.log(id)
+    this.formData = {}
     this.formData["eventID"] = id
 
   # public methods

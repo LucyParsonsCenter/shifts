@@ -8,6 +8,7 @@ ToggleDisplay = require('react-toggle-display')
 EventForm = React.createClass
   propTypes: ->
     canSubmit:          React.PropTypes.bool.isRequired
+    onDateHack:         React.PropTypes.bool.isRequired
     onIdChanged:        React.PropTypes.func.isRequired
     onSubmit:           React.PropTypes.func.isRequired
     onFormChanged:      React.PropTypes.func.isRequired
@@ -34,6 +35,21 @@ EventForm = React.createClass
           id="eventID"
           value={this.props.formData["eventID"] || ""}
           onChange={this.props.onIdChanged} />
+        <Input
+          name="dateHack"
+          id="dateHack"
+          value={""}
+          onChange={this.props.onDateHack} />
+        <Input
+          name="startHack"
+          id="startHack"
+          value={""}
+          onChange={this.props.onDateHack} />
+        <Input
+          name="endHack"
+          id="endHack"
+          value={""}
+          onChange={this.props.onDateHack} />
       </ToggleDisplay>
       <Radio
         name="eventType"
