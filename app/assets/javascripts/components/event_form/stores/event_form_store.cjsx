@@ -41,18 +41,23 @@ class EventFormStore
 
   handleIdChanged: (id) ->
     this.formData = {}
-    this.formData["eventID"] = id
-    if this.formData["eventID"] != ""
-      this.formData = $.ajax(
+    if id != ""
+      response = $.ajax(
         url: "/events/#{id}"
         type: "GET"
         success: (data, textStatus, jqXHR) ->
           return data
-          this.formData = data
-          this.formData["eventID"] = id
         error: (jqXHR, textStatus, errorThrown) ->
-          console.log(errorThrown)
+          return errorThrown
       )
+      if response.status != 200
+        this.serverErrors.push(response.statusText)
+      else
+        console.log("in here")
+        console.log(this.formData)
+        this.formData = response.responseJSON
+    this.formData["eventID"] = id
+
 
 
 
