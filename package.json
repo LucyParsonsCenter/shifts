@@ -28,6 +28,7 @@
     "coffeeify": "^1.2.0",
     "formsy-react": "~0.17.0",
     "formsy-react-components": "~0.6.2",
+    "lodash": "^3.10.1",
     "moment": "^2.10.6",
     "react": "~0.14.3",
     "react-dom": "^0.14.3",
