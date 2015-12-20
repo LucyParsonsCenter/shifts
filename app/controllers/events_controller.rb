@@ -83,7 +83,7 @@ class EventsController < ApplicationController
       end
     end
     event_response["collectiveMembers"] = @event.collective_members.map(&:id)
-    render json: event_response
+    render json: event_response, status: 200
   end
 
   def event_types(num)
