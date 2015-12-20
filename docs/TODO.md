@@ -2,11 +2,10 @@
 
 * require admin approval for new account registrations
 * make the colors not-ugly on the calendar
-* wire up calendar jquery to the react form (???)
+* handle events correctly (e.g. book talks or w/e)
 
 #In progress:
 
-* build out calendar functionality
 * write some documentation or help page kind of thing
 
 #Completed:
@@ -23,3 +22,5 @@
 * add a shift model
 * fix event modeling (allow multiple trainees and collective members)
 * write react component for editing events
+* wire up calendar jquery to the react form (???)
+* build out calendar functionality
