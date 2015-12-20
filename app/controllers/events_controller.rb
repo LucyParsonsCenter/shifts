@@ -67,6 +67,26 @@ class EventsController < ApplicationController
     end
   end
 
+  def show
+    set_event
+    event_response = {}
+    event_response["date"] = @event.start_time.strftime('%Y-%m-%d')
+    event_response["startTime"] = @event.start_time.strftime('%H:%m')
+    event_response["endTime"] = @event.end_time.strftime('%H:%m')
+    event_response
+    if @event.meeting
+      event_response["eventType"] = event_types(3)
+    else
+      if @event.trainees != []
+        event_response["eventType"] = event_types(2)
+        event_response["trainees"] = @event.trainees.map(&:id)
+      end
+      event_response["collectiveMembers"] = @event.collective_members.map(&:id)
+    end
+
+    render json: event_response
+  end
+
   def event_types(num)
     types = { '1' => "Shift",
       '2' => "Training shift",
@@ -85,6 +105,7 @@ class EventsController < ApplicationController
   end
 
   private
+
   def set_event
     @event = Event.find(params[:id])
   end
