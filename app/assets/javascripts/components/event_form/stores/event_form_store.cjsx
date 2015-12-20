@@ -1,5 +1,7 @@
 alt = require("../../shared/alt.js.coffee")
 EventFormActions = require("../actions/event_form_actions.cjsx")
+request = require("superagent")
+require('superagent-csrf')(request)
 
 class EventFormStore
   constructor: ->
@@ -41,16 +43,19 @@ class EventFormStore
     this.formData = {}
     this.formData["eventID"] = id
     if this.formData["eventID"] != ""
-      $.ajax(
+      this.formData = $.ajax(
         url: "/events/#{id}"
         type: "GET"
         success: (data, textStatus, jqXHR) ->
-          console.log(data)
-          console.log(textStatus)
-          console.log(jqXHR)
+          return data
+          this.formData = data
+          this.formData["eventID"] = id
         error: (jqXHR, textStatus, errorThrown) ->
           console.log(errorThrown)
       )
+
+
+
 
   # public methods
 
