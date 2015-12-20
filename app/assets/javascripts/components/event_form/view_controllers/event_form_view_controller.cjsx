@@ -40,6 +40,7 @@ EventFormVC = React.createClass
 
   onIdChanged: (key, value) ->
     EventFormActions.idChanged(value)
+    this.forceUpdate()
 
   onValid: ->
     EventFormActions.setCanSubmit(true)

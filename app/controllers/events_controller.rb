@@ -71,8 +71,8 @@ class EventsController < ApplicationController
     set_event
     event_response = {}
     event_response["date"] = @event.start_time.strftime('%Y-%m-%d')
-    event_response["startTime"] = @event.start_time.strftime('%H:%m')
-    event_response["endTime"] = @event.end_time.strftime('%H:%m')
+    event_response["startTime"] = @event.start_time.strftime('%H:%M')
+    event_response["endTime"] = @event.end_time.strftime('%H:%M')
     event_response
     if @event.meeting
       event_response["eventType"] = '3'
