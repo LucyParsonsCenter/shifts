@@ -1,7 +1,5 @@
 alt = require("../../shared/alt.js.coffee")
 EventFormActions = require("../actions/event_form_actions.cjsx")
-request = require("superagent")
-require('superagent-csrf')(request)
 
 class EventFormStore
   constructor: ->
@@ -12,7 +10,8 @@ class EventFormStore
     this.bindListeners
       handleSetCanSubmit:   EventFormActions.SET_CAN_SUBMIT
       handleFormChanged:    EventFormActions.FORM_CHANGED
-      handleIdChanged:      EventFormActions.ID_CHANGED
+      handleSetID:          EventFormActions.SET_ID
+      handleSetFormState:   EventFormActions.SET_FORM_STATE
       handleClearFormData:  EventFormActions.CLEAR_FORM_DATA
       handleDateHack:       EventFormActions.DATE_HACK
 
@@ -39,17 +38,11 @@ class EventFormStore
   handleFormChanged: (newData) ->
     this.formData[newData.key] = newData.value
 
-  handleIdChanged: (id) ->
-    if id != ""
-      $.getJSON("/events/#{id}", (data) =>
-        console.log(data)
-        console.log(this.formData)
-        this.formData = data
-        console.log(this.formData)
-        this.formData["eventID"] = id
-      )
-    else
-      this.formData["eventID"] = id
+  handleSetID: (id) ->
+    this.formData["eventID"] = id
+
+  handleSetFormState: (data) ->
+    this.formData = data
 
   # public methods
 

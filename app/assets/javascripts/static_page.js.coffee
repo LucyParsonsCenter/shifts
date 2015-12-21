@@ -57,6 +57,5 @@ $ ->
         eventNode.value = event.id
         eventToBubble = new Event('input', { bubbles: true })
         eventNode.dispatchEvent(eventToBubble)
-        $('#fullcalendar-modal').modal()
     }
   )
