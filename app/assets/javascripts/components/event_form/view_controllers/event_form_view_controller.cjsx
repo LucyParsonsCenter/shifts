@@ -55,6 +55,14 @@ EventFormVC = React.createClass
   onInvalid: ->
     EventFormActions.setCanSubmit(false)
 
+  onDelete: (id) ->
+    $.ajax(
+      url: "/events/#{id}"
+      type: "DELETE"
+      success: (data, textStatus, jqXHR) ->
+        $('#calendar').fullCalendar( 'refetchEvents' )
+        $('#fullcalendar-modal').modal( 'hide' )
+
   onSubmit: (data) ->
     $.ajax(
       url: "/create_or_update_event"

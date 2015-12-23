@@ -3,6 +3,8 @@ FormsyComponent = require('formsy-react-components')
 Select = FormsyComponent.Select
 Input = FormsyComponent.Input
 Radio = FormsyComponent.RadioGroup
+Button = require('react-bootstrap/lib/button')
+ButtonToolbar = require('react-bootstrap/lib/buttontoolbar')
 ToggleDisplay = require('react-toggle-display')
 
 EventForm = React.createClass
@@ -90,7 +92,10 @@ EventForm = React.createClass
         label="End time: "
         required />
       {this.renderConditionalInputs()}
-      <input className="btn btn-primary" type="submit" defaultValue="Submit" />
+      <ButtonToolbar>
+        <input className="btn btn-primary" type="submit" defaultValue="Submit" />
+        <Button>A button!</Button>
+      </ButtonToolbar>
     </Formsy.Form>
 
   renderConditionalInputs: ->

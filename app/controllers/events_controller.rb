@@ -96,6 +96,7 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    binding.pry
     @event.destroy
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
