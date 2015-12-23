@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   def normal_shifts
     start_date = params[:start].to_date
     end_date = params[:end].to_date
-    @shifts = Event.normal.where(start_time: start_date..end_date)
+    @shifts = Event.normal.where(start_time: start_date..end_date).distinct
     respond_to do |format|
       format.json { render json: @shifts.map(&:format) }
     end
@@ -13,7 +13,7 @@ class EventsController < ApplicationController
   def training_shifts
     start_date = params[:start].to_date
     end_date = params[:end].to_date
-    @shifts = Event.training.where(start_time: start_date..end_date)
+    @shifts = Event.training.where(start_time: start_date..end_date).distinct
     respond_to do |format|
       format.json { render json: @shifts.map(&:format) }
     end
@@ -22,7 +22,7 @@ class EventsController < ApplicationController
   def meetings
     start_date = params[:start].to_date
     end_date = params[:end].to_date
-    @meetings = Event.meeting.where(start_time: start_date..end_date)
+    @meetings = Event.meeting.where(start_time: start_date..end_date).distinct
     respond_to do |format|
       format.json { render json: @meetings.map(&:format) }
     end
@@ -41,20 +41,20 @@ class EventsController < ApplicationController
 
     case event_types(params["eventType"])
     when "Shift"
-      params["collectiveMembers"].map do |m|
+      params["collectiveMembers"].each do |m|
         @event.collective_members << CollectiveMember.find(m.to_i)
       end
     when "Training shift"
-      params["collectiveMembers"].map do |m|
+      params["collectiveMembers"].each do |m|
         @event.collective_members << CollectiveMember.find(m.to_i)
       end
-      params["trainee"].map do |t|
+      params["trainees"].each do |t|
         @event.trainees << Trainee.find(t.to_i)
       end
     when "Meeting"
       @event.meeting = true
     when "Event!"
-      params["collectiveMembers"].map do |m|
+      params["collectiveMembers"].each do |m|
         @event.collective_members << CollectiveMember.find(m.to_i)
       end
     end
