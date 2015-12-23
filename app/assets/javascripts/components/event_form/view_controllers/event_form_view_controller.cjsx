@@ -63,6 +63,7 @@ EventFormVC = React.createClass
       success: (data, textStatus, jqXHR) ->
         $('#fullcalendar-modal').modal('hide')
         EventFormActions.clearFormData()
+        $('#calendar').fullCalendar( 'refetchEvents' )
       error: (jqXHR, textStatus, errorThrown) ->
         console.log(errorThrown)
     )
