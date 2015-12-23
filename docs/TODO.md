@@ -1,5 +1,6 @@
 #Not yet started: 
 
+* add a list on `admin#trainee#show` that lists the shifts they've done
 * require admin approval for new account registrations
 * make the colors not-ugly on the calendar
 * handle events correctly (e.g. book talks or w/e)
