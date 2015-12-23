@@ -8,17 +8,17 @@ $ ->
       eventSources: [
         { # here we set up the API endpoints for our different shifts
           url: '/normal_shifts',
-          color: 'blue',
+          color: '#9FC6E7',
           textColor: 'black'
         },
         {
           url: '/training_shifts',
-          color: 'yellow',
+          color: '#9EA0FF',
           textColor: 'black'
         },
         {
           url: '/meetings_feed',
-          color: 'pink',
+          color: '#F691B2',
           textColor: 'black'
         }
       ],
