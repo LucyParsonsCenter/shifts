@@ -3,8 +3,8 @@ FormsyComponent = require('formsy-react-components')
 Select = FormsyComponent.Select
 Input = FormsyComponent.Input
 Radio = FormsyComponent.RadioGroup
-Button = require('react-bootstrap/lib/button')
-ButtonToolbar = require('react-bootstrap/lib/buttontoolbar')
+Button = require('react-bootstrap/lib/Button')
+ButtonToolbar = require('react-bootstrap/lib/ButtonToolbar')
 ToggleDisplay = require('react-toggle-display')
 
 EventForm = React.createClass
@@ -94,9 +94,17 @@ EventForm = React.createClass
       {this.renderConditionalInputs()}
       <ButtonToolbar>
         <input className="btn btn-primary" type="submit" defaultValue="Submit" />
-        <Button>A button!</Button>
+        {this.renderDeleteButton()}
       </ButtonToolbar>
     </Formsy.Form>
+
+  renderDeleteButton: ->
+    if this.props.formData["eventID"]
+      <Button
+        bsStyle="danger"
+        onClick={this.props.onDelete}>
+        Delete
+      </Button>
 
   renderConditionalInputs: ->
     eventType = this.props.formData["eventType"]

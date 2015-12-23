@@ -62,6 +62,7 @@ EventFormVC = React.createClass
       success: (data, textStatus, jqXHR) ->
         $('#calendar').fullCalendar( 'refetchEvents' )
         $('#fullcalendar-modal').modal( 'hide' )
+    )
 
   onSubmit: (data) ->
     $.ajax(
