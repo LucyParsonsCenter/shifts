@@ -3,6 +3,7 @@
 * require admin approval for new account registrations
 * make the colors not-ugly on the calendar
 * handle events correctly (e.g. book talks or w/e)
+* add a list of todo items to work on during training shifts
 
 #In progress:
 
