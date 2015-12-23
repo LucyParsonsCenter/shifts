@@ -46,8 +46,8 @@ EventFormVC = React.createClass
         $('#fullcalendar-modal').modal()
       )
     else
-      EventFormActions.setvalue(value)
-      $('#fullcalendar-modal').modal()
+      EventFormActions.clearFormData()
+      EventFormActions.setID(value)
 
   onValid: ->
     EventFormActions.setCanSubmit(true)
@@ -61,9 +61,9 @@ EventFormVC = React.createClass
       type: "POST"
       data: data
       success: (data, textStatus, jqXHR) ->
+        $('#calendar').fullCalendar( 'refetchEvents' )
         $('#fullcalendar-modal').modal('hide')
         EventFormActions.clearFormData()
-        $('#calendar').fullCalendar( 'refetchEvents' )
       error: (jqXHR, textStatus, errorThrown) ->
         console.log(errorThrown)
     )
