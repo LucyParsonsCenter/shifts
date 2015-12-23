@@ -41,8 +41,9 @@ class EventFormStore
   handleSetID: (id) ->
     this.formData["eventID"] = id
 
-  handleSetFormState: (data) ->
-    this.formData = data
+  handleSetFormState: (hack) ->
+    this.formData = hack.data
+    this.formData["eventID"] = hack.id
 
   # public methods
 

@@ -11,16 +11,4 @@ class EventFormActions
       'setID'
     )
 
-  idChanged: (id) ->
-    console.log(id)
-    if id != ""
-      $.getJSON("/events/#{id}", (data) ->
-        # this.setFormState(data)
-        this.setID(id)
-        $('#fullcalendar-modal').modal()
-      )
-    else
-      this.setID(id)
-      $('#fullcalendar-modal').modal()
-
 module.exports = alt.createActions(EventFormActions)
