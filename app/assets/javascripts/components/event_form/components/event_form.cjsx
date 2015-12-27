@@ -104,7 +104,7 @@ EventForm = React.createClass
       <ButtonToolbar>
         <Button
           bsStyle="danger"
-          onClick={this.props.deleteEvent(this.props.formData["eventID"])}>
+          onClick={this.deleteHelper.bind(this, this.props.formData["eventID"])}>
           Delete event
         </Button>
       </ButtonToolbar>
@@ -155,5 +155,8 @@ EventForm = React.createClass
       options={this.props.collectiveMembers}
       required
     />
+
+  deleteHelper: (id) ->
+    this.props.deleteEvent(id)
 
 module.exports = EventForm
