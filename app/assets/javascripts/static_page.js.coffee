@@ -5,6 +5,7 @@
 $ ->
   $('#calendar').fullCalendar(
     {
+      defaultView: 'agendaWeek',
       eventSources: [
         { # here we set up the API endpoints for our different shifts
           url: '/normal_shifts',
