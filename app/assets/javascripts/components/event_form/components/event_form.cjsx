@@ -11,6 +11,7 @@ EventForm = React.createClass
   propTypes: ->
     canSubmit:          React.PropTypes.bool.isRequired
     onDateHack:         React.PropTypes.bool.isRequired
+    deleteEvent:        React.PropTypes.func.isRequired
     onIdChanged:        React.PropTypes.func.isRequired
     onSubmit:           React.PropTypes.func.isRequired
     onFormChanged:      React.PropTypes.func.isRequired
@@ -26,85 +27,87 @@ EventForm = React.createClass
     formData: {}
 
   render: ->
-    <Formsy.Form
-      className="event-form"
-      onSubmit={this.props.onSubmit}
-      onValid={this.props.onValid}
-      onInvalid={this.props.onInvalid}>
-      <ToggleDisplay show=false>
+    <div id="event-form">
+      <Formsy.Form
+        className="event-form"
+        onSubmit={this.props.onSubmit}
+        onValid={this.props.onValid}
+        onInvalid={this.props.onInvalid}>
+        <ToggleDisplay show=false>
+          <Input
+            name="eventID"
+            id="eventID"
+            value={this.props.formData["eventID"] || ""}
+            onChange={this.props.onIdChanged} />
+          <Input
+            name="dateHack"
+            id="dateHack"
+            value={""}
+            onChange={this.props.onDateHack} />
+          <Input
+            name="startHack"
+            id="startHack"
+            value={""}
+            onChange={this.props.onDateHack} />
+          <Input
+            name="endHack"
+            id="endHack"
+            value={""}
+            onChange={this.props.onDateHack} />
+        </ToggleDisplay>
+        <Radio
+          name="eventType"
+          type="inline"
+          id="eventType"
+          label="Event Type: "
+          value={this.props.formData["eventType"] || '1'}
+          onChange={this.props.onFormChanged}
+          options={[
+              {value: '1', label: "Shift"},
+              {value: '2', label: "Training shift"},
+              {value: '3', label: "Meeting"},
+              {value: '4', label: "Event!"}
+          ]}
+          onChanged={this.props.onFormChanged} />
         <Input
-          name="eventID"
-          id="eventID"
-          value={this.props.formData["eventID"] || ""}
-          onChange={this.props.onIdChanged} />
+          name="date"
+          type="date"
+          id="eventDate"
+          value={this.props.formData["date"] || ""}
+          onChange={this.props.onFormChanged}
+          label="Date: "
+          required />
         <Input
-          name="dateHack"
-          id="dateHack"
-          value={""}
-          onChange={this.props.onDateHack} />
+          name="startTime"
+          type="time"
+          id="eventStartTime"
+          value={this.props.formData["startTime"] || ""}
+          onChange={this.props.onFormChanged}
+          label="Start time: "
+          required />
         <Input
-          name="startHack"
-          id="startHack"
-          value={""}
-          onChange={this.props.onDateHack} />
-        <Input
-          name="endHack"
-          id="endHack"
-          value={""}
-          onChange={this.props.onDateHack} />
-      </ToggleDisplay>
-      <Radio
-        name="eventType"
-        type="inline"
-        id="eventType"
-        label="Event Type: "
-        value={this.props.formData["eventType"] || '1'}
-        onChange={this.props.onFormChanged}
-        options={[
-            {value: '1', label: "Shift"},
-            {value: '2', label: "Training shift"},
-            {value: '3', label: "Meeting"},
-            {value: '4', label: "Event!"}
-        ]}
-        onChanged={this.props.onFormChanged} />
-      <Input
-        name="date"
-        type="date"
-        id="eventDate"
-        value={this.props.formData["date"] || ""}
-        onChange={this.props.onFormChanged}
-        label="Date: "
-        required />
-      <Input
-        name="startTime"
-        type="time"
-        id="eventStartTime"
-        value={this.props.formData["startTime"] || ""}
-        onChange={this.props.onFormChanged}
-        label="Start time: "
-        required />
-      <Input
-        name="endTime"
-        type="time"
-        id="eventEndTime"
-        value={this.props.formData["endTime"] || ""}
-        onChange={this.props.onFormChanged}
-        label="End time: "
-        required />
-      {this.renderConditionalInputs()}
-      <ButtonToolbar>
+          name="endTime"
+          type="time"
+          id="eventEndTime"
+          value={this.props.formData["endTime"] || ""}
+          onChange={this.props.onFormChanged}
+          label="End time: "
+          required />
+        {this.renderConditionalInputs()}
         <input className="btn btn-primary" type="submit" defaultValue="Submit" />
-        {this.renderDeleteButton()}
-      </ButtonToolbar>
-    </Formsy.Form>
+      </Formsy.Form>
+      {this.renderEventDelete()}
+    </div>
 
-  renderDeleteButton: ->
+  renderEventDelete: ->
     if this.props.formData["eventID"]
-      <Button
-        bsStyle="danger"
-        onClick={this.props.onDelete}>
-        Delete
-      </Button>
+      <ButtonToolbar>
+        <Button
+          bsStyle="danger"
+          onClick={this.props.deleteEvent(this.props.formData["eventID"])}>
+          Delete event
+        </Button>
+      </ButtonToolbar>
 
   renderConditionalInputs: ->
     eventType = this.props.formData["eventType"]

@@ -24,6 +24,7 @@ EventFormVC = React.createClass
       <EventForm
         canSubmit={EventFormStore.getCanSubmit()}
         onDateHack={EventFormActions.dateHack}
+        deleteEvent={this.deleteEvent}
         onSubmit={this.onSubmit}
         onFormChanged={this.onFormChanged}
         onValid={this.onValid}
@@ -55,7 +56,7 @@ EventFormVC = React.createClass
   onInvalid: ->
     EventFormActions.setCanSubmit(false)
 
-  onDelete: (id) ->
+  deleteEvent: (id) ->
     $.ajax(
       url: "/events/#{id}"
       type: "DELETE"
