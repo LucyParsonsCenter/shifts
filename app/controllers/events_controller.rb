@@ -29,7 +29,6 @@ class EventsController < ApplicationController
   end
 
   def create_or_update
-    binding.pry
     if params["eventID"] == ""
       @event = Event.new
     else
@@ -81,10 +80,10 @@ class EventsController < ApplicationController
     else
       if @event.trainees != []
         event_response["eventType"] = '2'
-        event_response["trainees"] = @event.trainees.map(&:id)
+        event_response["traineesMulti"] = @event.trainees.map(&:select_format)
       end
     end
-    event_response["collectiveMembers"] = @event.collective_members.map(&:id)
+    event_response["collectiveMembersMulti"] = @event.collective_members.map(&:select_format)
     render json: event_response, status: 200
   end
 
