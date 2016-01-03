@@ -8,17 +8,27 @@ class EventFormStore
     this.serverErrors = []
 
     this.bindListeners
-      handleSetCanSubmit:   EventFormActions.SET_CAN_SUBMIT
-      handleFormChanged:    EventFormActions.FORM_CHANGED
-      handleSetID:          EventFormActions.SET_ID
-      handleSetFormState:   EventFormActions.SET_FORM_STATE
-      handleClearFormData:  EventFormActions.CLEAR_FORM_DATA
-      handleDateHack:       EventFormActions.DATE_HACK
+      handleSetCanSubmit:       EventFormActions.SET_CAN_SUBMIT
+      handleFormChanged:        EventFormActions.FORM_CHANGED
+      handleSetID:              EventFormActions.SET_ID
+      handleSetFormState:       EventFormActions.SET_FORM_STATE
+      handleClearFormData:      EventFormActions.CLEAR_FORM_DATA
+      handleDateHack:           EventFormActions.DATE_HACK
+      handleFormatMultiselect:  EventFormActions.FORMAT_MULTISELECT
 
     this.exportPublicMethods
       getCanSubmit:     this.getCanSubmit
       getFormData:      this.getFormData
       getServerErrors:  this.getServerErrors
+
+  handleFormatMultiselect: ->
+    members = []
+    members.push(select.value) for select in this.formData["collectiveMembersMulti"]
+    this.formData["collectiveMembers"] = members
+    if this.formData["eventType"] == "2"
+      trainees = []
+      trainees.push(select.value) for select in this.formData["traineesMulti"]
+      this.formData["trainees"] = trainees
 
   handleDateHack: (date) ->
     switch date[0]

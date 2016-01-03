@@ -9,6 +9,7 @@ class EventFormActions
       'setFormState',
       'clearFormData',
       'setID'
+      'formatMultiselect'
     )
 
 module.exports = alt.createActions(EventFormActions)

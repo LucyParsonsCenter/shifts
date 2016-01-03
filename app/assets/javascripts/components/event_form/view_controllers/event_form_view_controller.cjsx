@@ -66,6 +66,8 @@ EventFormVC = React.createClass
     )
 
   onSubmit: (data) ->
+    EventFormActions.formatMultiselect()
+    console.log(data)
     $.ajax(
       url: "/create_or_update_event"
       type: "POST"

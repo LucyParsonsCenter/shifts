@@ -133,21 +133,21 @@ EventForm = React.createClass
 
   renderTrainee: ->
     <MultiSelect
-      name="trainees"
+      name="traineesMulti"
       options={this.props.trainees}
       placeholder="Pick a trainee (or two!)"
       id="trainees"
-      onChange={this.selectHelper.bind(this, "trainees")}
-      value={this.props.formData["trainees"] || ""}
+      onChange={this.selectHelper.bind(this, "traineesMulti")}
+      value={this.props.formData["traineesMulti"] || ""}
       label="Trainee"
     />
 
   renderCollectiveMember: ->
     <MultiSelect
-      name="collectiveMembers"
+      name="collectiveMembersMulti"
       id="collectiveMembers"
-      onChange={this.selectHelper.bind(this, "collectiveMembers")}
-      value={this.props.formData["collectiveMembers"] || ""}
+      onChange={this.selectHelper.bind(this, "collectiveMembersMulti")}
+      value={this.props.formData["collectiveMembersMulti"] || ""}
       label="Collective Member"
       placeholder="Pick a collective member (or two!)"
       options={this.props.collectiveMembers}
