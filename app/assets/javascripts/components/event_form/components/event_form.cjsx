@@ -16,7 +16,6 @@ EventForm = React.createClass
     onIdChanged:        React.PropTypes.func.isRequired
     onSubmit:           React.PropTypes.func.isRequired
     onFormChanged:      React.PropTypes.func.isRequired
-    onSelectChanged:    React.PropTypes.func.isRequired
     onValid:            React.PropTypes.func.isRequired
     onInvalid:          React.PropTypes.func.isRequired
     formData:           React.PropTypes.object.isRequired
@@ -138,7 +137,7 @@ EventForm = React.createClass
       options={this.props.trainees}
       placeholder="Pick a trainee (or two!)"
       id="trainees"
-      onChange={this.props.onSelectChanged.bind(this, "trainees")}
+      onChange={this.selectHelper.bind(this, "trainees")}
       value={this.props.formData["trainees"] || ""}
       label="Trainee"
     />
@@ -147,7 +146,7 @@ EventForm = React.createClass
     <MultiSelect
       name="collectiveMembers"
       id="collectiveMembers"
-      onChange={this.props.onSelectChanged.bind(this, "collectiveMembers")}
+      onChange={this.selectHelper.bind(this, "collectiveMembers")}
       value={this.props.formData["collectiveMembers"] || ""}
       label="Collective Member"
       placeholder="Pick a collective member (or two!)"
@@ -157,5 +156,8 @@ EventForm = React.createClass
 
   deleteHelper: (id) ->
     this.props.deleteEvent(id)
+
+  selectHelper: (selectName, changed, selected) ->
+    this.props.onFormChanged(selectName, selected)
 
 module.exports = EventForm

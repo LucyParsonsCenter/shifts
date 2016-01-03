@@ -29,6 +29,7 @@ class EventsController < ApplicationController
   end
 
   def create_or_update
+    binding.pry
     if params["eventID"] == ""
       @event = Event.new
     else
@@ -39,8 +40,6 @@ class EventsController < ApplicationController
     @event.start_time = DateTime.parse("#{params["date"]}T#{params["startTime"]}")
     @event.end_time = DateTime.parse("#{params["date"]}T#{params["endTime"]}")
 
-
-    binding.pry
 
     case event_types(params["eventType"])
     when "Shift"
