@@ -22,11 +22,11 @@ Multiselect = React.createClass
         name={this.props.name}
         options={this.props.options}
         placeholder={this.props.placeholder}
-        multi={true}
+        multi=true
         id={this.props.id}
         onChange={this.props.onChange}
         value={this.props.value}
-        label={this.props.label}
-      />
+        label={this.props.label} />
     </div>
 
+module.exports = Multiselect
