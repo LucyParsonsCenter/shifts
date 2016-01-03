@@ -12,4 +12,5 @@
 
 window._ = require("lodash")
 window.React = require("react")
+window.ReactDOM = require("react-dom")
 window.EventFormVC = require("./components/event_form/view_controllers/event_form_view_controller")

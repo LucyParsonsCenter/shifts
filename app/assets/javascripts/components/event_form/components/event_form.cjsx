@@ -1,6 +1,7 @@
 Formsy = require('formsy-react')
 FormsyComponent = require('formsy-react-components')
 Select = FormsyComponent.Select
+MultiSelect = require('./multiselect.cjsx')
 Input = FormsyComponent.Input
 Radio = FormsyComponent.RadioGroup
 Button = require('react-bootstrap/lib/Button')
@@ -131,17 +132,27 @@ EventForm = React.createClass
       </div>
 
   renderTrainee: ->
-    <Select
+    <MultiSelect
       name="trainees"
-      id="trainees"
-      onChange={this.props.onFormChanged}
-      value={this.props.formData["trainees"] || []}
-      label="Trainee: "
-      multiple
-      placeholder="Pick a trainee!"
       options={this.props.trainees}
-      required
+      placeholder="Pick a trainee!"
+      multi=true
+      id="trainees"
+      onChange={(val) -> console.log(val)}
+      value={this.props.formData["trainees"] || ""}
+      label="Trainee: "
     />
+    # <Select
+    #   name="trainees"
+    #   id="trainees"
+    #   onChange={this.props.onFormChanged}
+    #   value={this.props.formData["trainees"] || []}
+    #   label="Trainee: "
+    #   multiple
+    #   placeholder="Pick a trainee!"
+    #   options={this.props.trainees}
+    #   required
+    # />
 
   renderCollectiveMember: ->
     <Select
