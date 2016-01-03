@@ -8,10 +8,14 @@ class Event < ActiveRecord::Base
 
   def format
     event = Hash.new
+    collective_members = self.collective_members.map { |c| "#{c.first_name} #{c.last_name}" }.join(", ")
+    trainees = self.trainees.map { |t| "#{t.first_name} #{t.last_name}" }.join(", ")
     if self.meeting
       event["title"] = "Collective Meeting"
+    elsif self.trainees != []
+      event["title"] = collective_members + " training: " + trainees
     else
-      event["title"] = self.collective_members.first.try(:first_name)
+      event["title"] = collective_members
     end
     event["start"] = self.start_time
     event["end"] = self.end_time
