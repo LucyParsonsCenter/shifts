@@ -67,6 +67,10 @@ EventFormVC = React.createClass
 
   onSubmit: (data) ->
     EventFormActions.formatMultiselect()
+    formData = EventFormStore.getFormData()
+    data["collectiveMembers"] = formData["collectiveMembers"]
+    if formData["trainees"]
+      data["trainees"] = formData["trainees"]
     console.log(data)
     $.ajax(
       url: "/create_or_update_event"
