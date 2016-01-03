@@ -27,6 +27,7 @@ EventFormVC = React.createClass
         deleteEvent={this.deleteEvent}
         onSubmit={this.onSubmit}
         onFormChanged={this.onFormChanged}
+        onSelectChanged={this.onSelectChanged}
         onValid={this.onValid}
         onInvalid={this.onInvalid}
         onIdChanged={this.onIdChanged}
@@ -38,6 +39,9 @@ EventFormVC = React.createClass
 
   onFormChanged: (key, value) ->
     EventFormActions.formChanged({key: key, value: value})
+
+  onSelectChanged: (selectName, changed, selected) ->
+    EventFormActions.formChanged({key: selectName, value: selected})
 
   onIdChanged: (key, value) ->
     if value != ""

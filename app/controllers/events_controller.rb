@@ -39,6 +39,9 @@ class EventsController < ApplicationController
     @event.start_time = DateTime.parse("#{params["date"]}T#{params["startTime"]}")
     @event.end_time = DateTime.parse("#{params["date"]}T#{params["endTime"]}")
 
+
+    binding.pry
+
     case event_types(params["eventType"])
     when "Shift"
       params["collectiveMembers"].each do |m|

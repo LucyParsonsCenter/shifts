@@ -16,6 +16,7 @@ EventForm = React.createClass
     onIdChanged:        React.PropTypes.func.isRequired
     onSubmit:           React.PropTypes.func.isRequired
     onFormChanged:      React.PropTypes.func.isRequired
+    onSelectChanged:    React.PropTypes.func.isRequired
     onValid:            React.PropTypes.func.isRequired
     onInvalid:          React.PropTypes.func.isRequired
     formData:           React.PropTypes.object.isRequired
@@ -132,38 +133,23 @@ EventForm = React.createClass
       </div>
 
   renderTrainee: ->
-    <div>
-      <MultiSelect
-        name="trainees"
-        options={this.props.trainees}
-        placeholder="Pick a trainee!"
-        multi=true
-        id="trainees"
-        onChange={(val) -> console.log(val)}
-        value={this.props.formData["trainees"] || ""}
-        label="Trainee"
-      />
-      <Select
-        name="trainees"
-        id="trainees"
-        onChange={this.props.onFormChanged}
-        value={this.props.formData["trainees"] || []}
-        label="Trainee: "
-        multiple
-        placeholder="Pick a trainee!"
-        options={this.props.trainees}
-        required
-      />
-    </div>
+    <MultiSelect
+      name="trainees"
+      options={this.props.trainees}
+      placeholder="Pick a trainee (or two!)"
+      id="trainees"
+      onChange={this.props.onSelectChanged.bind(this, "trainees")}
+      value={this.props.formData["trainees"] || ""}
+      label="Trainee"
+    />
 
   renderCollectiveMember: ->
-    <Select
+    <MultiSelect
       name="collectiveMembers"
       id="collectiveMembers"
-      onChange={this.props.onFormChanged}
-      value={this.props.formData["collectiveMembers"] || []}
+      onChange={this.props.onSelectChanged.bind(this, "collectiveMembers")}
+      value={this.props.formData["collectiveMembers"] || ""}
       label="Collective Member"
-      multiple
       placeholder="Pick a collective member (or two!)"
       options={this.props.collectiveMembers}
       required
