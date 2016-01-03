@@ -139,7 +139,7 @@ EventForm = React.createClass
       label="Trainee: "
       multiple
       placeholder="Pick a trainee!"
-      options={this.props.collectiveMembers}
+      options={this.props.trainees}
       required
     />
 
