@@ -16,6 +16,8 @@ class Event < ActiveRecord::Base
       event["title"] = self.title
     elsif self.trainees != []
       event["title"] = collective_members + " training: " + trainees
+    elsif self.collective_members == []
+      event["title"] = "an event!"
     else
       event["title"] = collective_members
     end
