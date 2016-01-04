@@ -5,6 +5,7 @@ class Event < ActiveRecord::Base
   scope :meeting, -> { where(meeting: true) }
   scope :training, -> { joins(:trainees) }
   scope :normal, -> { joins(:collective_members).where.not(id: Event.training.select(:id)) }
+  scope :event, -> { where.not(title: nil) }
 
   def format
     event = Hash.new
