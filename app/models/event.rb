@@ -12,6 +12,8 @@ class Event < ActiveRecord::Base
     trainees = self.trainees.map { |t| "#{t.first_name} #{t.last_name}" }.join(", ")
     if self.meeting
       event["title"] = "Collective Meeting"
+    elsif self.title?
+      event["title"] = self.title
     elsif self.trainees != []
       event["title"] = collective_members + " training: " + trainees
     else
