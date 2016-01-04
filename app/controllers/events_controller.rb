@@ -58,6 +58,7 @@ class EventsController < ApplicationController
       params["collectiveMembers"].each do |m|
         @event.collective_members << CollectiveMember.find(m.to_i)
       end
+      @event.title = params["eventTitle"]
     end
 
     begin
