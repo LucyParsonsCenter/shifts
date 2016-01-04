@@ -121,7 +121,6 @@ EventForm = React.createClass
       </div>
     else if eventType == '4'
       <div>
-        {this.renderCollectiveMember()}
         <Input
           name="eventTitle"
           id="eventTitle"
@@ -129,6 +128,7 @@ EventForm = React.createClass
           onChange={this.props.onFormChanged}
           label="Event title:"
           required />
+        {this.renderCollectiveMember()}
       </div>
 
   renderTrainee: ->
