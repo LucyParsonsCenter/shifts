@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   get '/normal_shifts' => 'events#normal_shifts'
   get '/training_shifts' => 'events#training_shifts'
   get '/meetings_feed' => 'events#meetings'
+  get '/events_feed' => 'events#events'
   post '/create_or_update_event' => 'events#create_or_update'
 end
