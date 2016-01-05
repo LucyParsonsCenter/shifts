@@ -28,6 +28,15 @@ class EventsController < ApplicationController
     end
   end
 
+  def events
+    start_date = params[:start].to_date
+    end_date = params[:end].to_date
+    @events = Event.event.where(start_time: start_date..end_date).distinct
+    respond_to do |format|
+      format.json { render json: @events.map(&:format) }
+    end
+  end
+
   def create_or_update
     if params["eventID"] == ""
       @event = Event.new
@@ -78,11 +87,12 @@ class EventsController < ApplicationController
     event_response
     if @event.meeting
       event_response["eventType"] = '3'
-    else
-      if @event.trainees != []
-        event_response["eventType"] = '2'
-        event_response["traineesMulti"] = @event.trainees.map(&:select_format)
-      end
+    elsif @event.trainees != []
+      event_response["eventType"] = '2'
+      event_response["traineesMulti"] = @event.trainees.map(&:select_format)
+    elsif @event.title?
+      event_response["eventType"] = '4'
+      event_response["eventTitle"] = @event.title
     end
     event_response["collectiveMembersMulti"] = @event.collective_members.map(&:select_format)
     render json: event_response, status: 200
