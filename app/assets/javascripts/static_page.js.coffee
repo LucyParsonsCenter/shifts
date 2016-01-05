@@ -21,6 +21,11 @@ $ ->
           url: '/meetings_feed',
           color: '#F691B2',
           textColor: 'black'
+        },
+        {
+          url: '/events_feed',
+          color: '#B3DC6C',
+          textColor: 'black'
         }
       ],
       header: {

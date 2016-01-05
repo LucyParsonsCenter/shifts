@@ -2,9 +2,9 @@ class Event < ActiveRecord::Base
   has_and_belongs_to_many :collective_members
   has_and_belongs_to_many :trainees
 
-  scope :meeting, -> { where(meeting: true) }
+  scope :meeting, -> { where(meeting: true).where(title: nil) }
   scope :training, -> { joins(:trainees) }
-  scope :normal, -> { joins(:collective_members).where.not(id: Event.training.select(:id)) }
+  scope :normal, -> { joins(:collective_members).where.not(id: Event.training.select(:id)).where(title: nil) }
   scope :event, -> { where.not(title: nil) }
 
   def format
