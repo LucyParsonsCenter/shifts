@@ -48,12 +48,12 @@ class EventsController < ApplicationController
     @event.start_time = DateTime.parse("#{params["date"]}T#{params["startTime"]}")
     @event.end_time = DateTime.parse("#{params["date"]}T#{params["endTime"]}")
 
-
     case event_types(params["eventType"])
     when "Shift"
       params["collectiveMembers"].each do |m|
         @event.collective_members << CollectiveMember.find(m.to_i)
       end
+      @event.event_type = "shift"
     when "Training shift"
       params["collectiveMembers"].each do |m|
         @event.collective_members << CollectiveMember.find(m.to_i)
@@ -61,13 +61,16 @@ class EventsController < ApplicationController
       params["trainees"].each do |t|
         @event.trainees << Trainee.find(t.to_i)
       end
+      @event.event_type = "training_shift"
     when "Meeting"
       @event.meeting = true
+      @event.event_type = "meeting"
     when "Event!"
       params["collectiveMembers"].each do |m|
         @event.collective_members << CollectiveMember.find(m.to_i)
       end
       @event.title = params["eventTitle"]
+      @event.event_type = "event"
     end
 
     begin
