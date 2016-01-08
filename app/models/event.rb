@@ -2,10 +2,10 @@ class Event < ActiveRecord::Base
   has_and_belongs_to_many :collective_members
   has_and_belongs_to_many :trainees
 
-  scope :meeting, -> { where(meeting: true).where(title: nil) }
-  scope :training, -> { joins(:trainees) }
-  scope :normal, -> { joins(:collective_members).where.not(id: Event.training.select(:id)).where(title: nil) }
-  scope :event, -> { where.not(title: nil) }
+  scope :meeting, -> { where(event_type: "meeting") }
+  scope :training, -> { where(event_type: "training_shift") }
+  scope :normal, -> { where(event_type: "shift") }
+  scope :event, -> { where(event_type: "event") }
 
   def format
     event = Hash.new
