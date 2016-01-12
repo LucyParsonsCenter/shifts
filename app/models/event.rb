@@ -11,16 +11,15 @@ class Event < ActiveRecord::Base
     event = Hash.new
     collective_members = self.collective_members.map { |c| "#{c.first_name} #{c.last_name}" }.join(", ")
     trainees = self.trainees.map { |t| "#{t.first_name} #{t.last_name}" }.join(", ")
-    if self.meeting
-      event["title"] = "Collective Meeting"
-    elsif self.title?
-      event["title"] = self.title
-    elsif self.trainees != []
-      event["title"] = collective_members + " training: " + trainees
-    elsif self.collective_members == []
-      event["title"] = "an event!"
-    else
+    case self.event_type
+    when "shift"
       event["title"] = collective_members
+    when "training_shift"
+      event["title"] = collective_members + " training: " + trainees
+    when "meeting"
+      event["title"] = "Collective Meeting"
+    when "event"
+      event["title"] = self.title
     end
     event["start"] = self.start_time
     event["end"] = self.end_time
