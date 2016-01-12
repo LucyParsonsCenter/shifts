@@ -58,8 +58,10 @@ class EventsController < ApplicationController
       params["collectiveMembers"].each do |m|
         @event.collective_members << CollectiveMember.find(m.to_i)
       end
-      params["trainees"].each do |t|
-        @event.trainees << Trainee.find(t.to_i)
+      if params["trainees"]
+        params["trainees"].each do |t|
+          @event.trainees << Trainee.find(t.to_i)
+        end
       end
       @event.event_type = "training_shift"
     when "Meeting"
