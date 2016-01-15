@@ -10,12 +10,19 @@ class Event < ActiveRecord::Base
   def format
     event = Hash.new
     collective_members = self.collective_members.map { |c| "#{c.first_name} #{c.last_name}" }.join(", ")
-    trainees = self.trainees.map { |t| "#{t.first_name} #{t.last_name}" }.join(", ")
+    trainees = self.trainees.map do |t|
+      trainee_text = "#{t.first_name} #{t.last_name}"
+      if t.phone_number.present?
+        trainee_text << ": #{t.phone_number}"
+      end
+      trainee_text
+    end
+
     case self.event_type
     when "shift"
       event["title"] = collective_members
     when "training_shift"
-      event["title"] = collective_members + " training: " + trainees
+      event["title"] = collective_members + " training: " + trainees.join(",")
     when "meeting"
       event["title"] = "Collective Meeting"
     when "event"
