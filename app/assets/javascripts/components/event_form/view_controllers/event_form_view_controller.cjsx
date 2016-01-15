@@ -39,16 +39,16 @@ EventFormVC = React.createClass
   onFormChanged: (key, value) ->
     EventFormActions.formChanged({key: key, value: value})
 
-  onIdChanged: (key, value) ->
-    if value != ""
-      $.getJSON("/events/#{value}", (data) ->
+  onIdChanged: (key, id) ->
+    if id != ""
+      $.getJSON("/events/#{id}", (data) ->
         setTimeout =>
-          EventFormActions.setFormState({data: data, id: value})
+          EventFormActions.setFormState({data: data, id: id})
         $('#fullcalendar-modal').modal()
       )
     else
       EventFormActions.clearFormData()
-      EventFormActions.setID(value)
+      EventFormActions.setID(id)
 
   onValid: ->
     EventFormActions.setCanSubmit(true)
