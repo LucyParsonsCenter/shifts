@@ -90,12 +90,15 @@ class EventsController < ApplicationController
     event_response["startTime"] = @event.start_time.strftime('%H:%M')
     event_response["endTime"] = @event.end_time.strftime('%H:%M')
     event_response
-    if @event.meeting
-      event_response["eventType"] = '3'
-    elsif @event.trainees != []
+    case @event.event_type
+    when "shift"
+      event_response["eventType"] = '1'
+    when "training_shift"
       event_response["eventType"] = '2'
       event_response["traineesMulti"] = @event.trainees.map(&:select_format)
-    elsif @event.title?
+    when "meeting"
+      event_response["eventType"] = '3'
+    when "event"
       event_response["eventType"] = '4'
       event_response["eventTitle"] = @event.title
     end
