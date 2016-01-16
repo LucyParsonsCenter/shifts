@@ -78,6 +78,7 @@ EventForm = React.createClass
           onChange={this.props.onFormChanged}
           label="Date: "
           required />
+        {this.renderRepeatEvent()}
         <Input
           name="startTime"
           type="time"
@@ -99,6 +100,15 @@ EventForm = React.createClass
       </Formsy.Form>
       {this.renderEventDelete()}
     </div>
+
+  renderRepeatEvent: ->
+    <Input
+      name="repeatTimes"
+      label="Weeks to repeat:"
+      id="eventRepeatTimes"
+      value={this.props.formData["repeatTimes"] || ""}
+      onChange={this.props.onFormChanged}
+      />
 
   renderEventDelete: ->
     if this.props.formData["eventID"]

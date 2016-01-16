@@ -1,6 +1,4 @@
 alt = require("../../shared/alt.js.coffee")
-request = require("superagent")
-require('superagent-csrf')(request)
 EventFormActions = require("../actions/event_form_actions.cjsx")
 EventForm = require("../components/event_form.cjsx")
 EventFormStore = require("../stores/event_form_store.cjsx")

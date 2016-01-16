@@ -78,6 +78,17 @@ class EventsController < ApplicationController
     begin
       @event.save!
       render json: ["record saved correctly!"], status: 200
+
+      if params["repeatTimes"].presence
+        1.upto params["repeatTimes"].to_i - 1 do |i|
+          event = @event.dup
+          event.start_time = event.start_time + i.weeks
+          event.end_time = event.end_time + i.weeks
+          event.collective_members = @event.collective_members
+          event.trainees = @event.trainees
+          event.save!
+        end
+      end
     rescue ActiveRecord::RecordInvalid => err
       render json: ["Something didn't work out correctly: #{err}"], status: 422
     end
