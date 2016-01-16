@@ -95,10 +95,15 @@ EventForm = React.createClass
           label="End time: "
           required />
         {this.renderConditionalInputs()}
+        {this.renderRepeatEvent()}
         <input className="btn btn-primary" type="submit" defaultValue="Submit" />
       </Formsy.Form>
       {this.renderEventDelete()}
     </div>
+
+  renderRepeatEvent: ->
+    <div id="repeatEvent">
+
 
   renderEventDelete: ->
     if this.props.formData["eventID"]
