@@ -22,11 +22,11 @@ class EventFormStore
       getServerErrors:  this.getServerErrors
 
   handleFormatMultiselect: ->
-    if this.formData["eventType"] != "3" and this.formData["collectiveMembersMulti"]
+    if this.formData["collectiveMembersMulti"]
       members = []
       members.push(select.value) for select in this.formData["collectiveMembersMulti"]
       this.formData["collectiveMembers"] = members
-    if this.formData["eventType"] == "2" and this.formData["traineesMulti"]
+    if this.formData["traineesMulti"]
       trainees = []
       trainees.push(select.value) for select in this.formData["traineesMulti"]
       this.formData["trainees"] = trainees
