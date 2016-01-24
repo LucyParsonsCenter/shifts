@@ -48,6 +48,7 @@ class EventsController < ApplicationController
     @event.start_time = DateTime.parse("#{params["date"]}T#{params["startTime"]}")
     @event.end_time = DateTime.parse("#{params["date"]}T#{params["endTime"]}")
 
+    get_notes
     add_collective_members_and_trainees
     case event_types(params["eventType"])
     when "Shift"
@@ -119,6 +120,12 @@ class EventsController < ApplicationController
   end
 
   private
+
+  def get_notes
+    if params["notes"]
+      @event.notes = params["notes"]
+    end
+  end
 
   def add_collective_members_and_trainees
     if params["trainees"]
