@@ -4,6 +4,7 @@ Select = FormsyComponent.Select
 MultiSelect = require('./multiselect.cjsx')
 Input = FormsyComponent.Input
 Radio = FormsyComponent.RadioGroup
+Textarea = FormsyComponent.Textarea
 Button = require('react-bootstrap/lib/Button')
 ButtonToolbar = require('react-bootstrap/lib/ButtonToolbar')
 ToggleDisplay = require('react-toggle-display')
@@ -96,6 +97,12 @@ EventForm = React.createClass
           label="End time: "
           required />
         {this.renderConditionalInputs()}
+        <Textarea
+          name="notes"
+          id="event-notes"
+          value={this.props.formData["notes"] || ""}
+          onChange={this.props.onFormChanged}
+          label="Notes: " />
         <input className="btn btn-primary" type="submit" defaultValue="Submit" />
       </Formsy.Form>
       {this.renderEventDelete()}
