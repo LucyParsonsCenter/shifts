@@ -102,6 +102,7 @@ class EventsController < ApplicationController
       event_response["eventTitle"] = @event.title
     end
     event_response["collectiveMembersMulti"] = @event.collective_members.map(&:select_format)
+    event_response["notes"] = @event.notes if @event.notes
     render json: event_response, status: 200
   end
 
