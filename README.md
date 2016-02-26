@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/LucyParsonsCenter/shifts.png?label=ready&title=Ready)](https://waffle.io/LucyParsonsCenter/shifts)
 #Shifts
 
 [![Build Status](https://semaphoreci.com/api/v1/projects/d6368227-3b6f-4fb6-84b3-fa0f70687927/611246/badge.svg)](https://semaphoreci.com/alice-pote/training-2)
