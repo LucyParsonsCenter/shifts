@@ -34,6 +34,7 @@ $ ->
         right: 'month,agendaWeek,agendaDay',
       },
       selectable: true,
+      nowIndicator: true,
       selectHelper: true,
 
       select: (start, end) ->
@@ -65,3 +66,5 @@ $ ->
         eventNode.dispatchEvent(eventToBubble)
     }
   )
+
+  $('#calendar').fullCalendar('option', 'contentHeight', "auto");
