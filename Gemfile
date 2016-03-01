@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.2.3'
 
+gem "administrate", "~> 0.1.4"
 gem 'inline_svg'
 gem "browserify-rails"
 gem 'turbolinks'
