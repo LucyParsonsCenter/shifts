@@ -3,6 +3,7 @@ class CollectiveMembersController < ApplicationController
 
   def index
     @collective_members = CollectiveMember.all
+    render :index
   end
 
   def show

@@ -19,4 +19,7 @@ Rails.application.routes.draw do
   post '/create_or_update_event' => 'events#create_or_update'
 
   # admin pages
+  get '/trainees' => 'trainees#index'
+
+  get '/collective_members' => 'collective_members#index'
 end
