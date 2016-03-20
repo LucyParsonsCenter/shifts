@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.2.3'
 
 gem "browserify-rails"
+gem "datetime_picker_rails"
 gem 'turbolinks'
 gem 'react-rails', '~> 1.5.0'
 gem 'formtastic', '~> 3.0'
