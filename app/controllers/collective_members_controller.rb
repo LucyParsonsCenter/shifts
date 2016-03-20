@@ -7,6 +7,8 @@ class CollectiveMembersController < ApplicationController
   end
 
   def show
+    @collective_member = CollectiveMember.find_by_id(params["id"])
+    render :show
   end
 
   def new

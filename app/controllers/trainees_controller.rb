@@ -7,6 +7,8 @@ class TraineesController < ApplicationController
   end
 
   def show
+    @trainee = Trainee.find_by_id(params["id"])
+    render :show
   end
 
   def new

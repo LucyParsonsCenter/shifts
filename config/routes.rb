@@ -20,6 +20,8 @@ Rails.application.routes.draw do
 
   # admin pages
   get '/trainees' => 'trainees#index'
+  get '/trainees/:id' => 'trainees#show'
 
   get '/collective_members' => 'collective_members#index'
+  get '/collective_members/:id' => 'collective_members#show'
 end
