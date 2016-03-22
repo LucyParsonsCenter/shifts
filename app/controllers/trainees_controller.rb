@@ -13,6 +13,7 @@ class TraineesController < ApplicationController
 
   def new
     @trainee = Trainee.new
+    render :trainee_form
   end
 
   def edit
