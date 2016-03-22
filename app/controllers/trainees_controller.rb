@@ -16,6 +16,8 @@ class TraineesController < ApplicationController
   end
 
   def edit
+    @trainee = Trainee.find_by_id(params["id"])
+    render :trainee_form
   end
 
   def create
