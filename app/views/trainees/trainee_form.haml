@@ -1,6 +1,15 @@
+
 = bootstrap_form_for(@trainee) do |f|
-  = f.email_field :email_address
-  = f.text_field :first_name
-  = f.text_field :last_name
-  = f.phone_field :phone_number
+  .row
+    .col-md-8
+      = f.email_field :email_address
+  .row
+    .col-md-8
+      = f.text_field :first_name
+  .row
+    .col-md-8
+      = f.text_field :last_name
+  .row
+    .col-md-8
+      = f.phone_field :phone_number
   = f.submit
