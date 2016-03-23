@@ -1,6 +1,4 @@
 class TraineesController < ApplicationController
-  before_action :set_trainee, only: [:show, :edit, :update, :destroy]
-
   def index
     @trainees = Trainee.all
     render :index
@@ -23,26 +21,25 @@ class TraineesController < ApplicationController
 
   def create
     @trainee = Trainee.new(trainee_params)
-
-    respond_to do |format|
-      if @trainee.save
-        format.html { redirect_to @trainee, notice: 'Trainee was successfully created.' }
-        format.json { render :show, status: :created, location: @trainee }
-      else
-        format.html { render :new }
-        format.json { render json: @trainee.errors, status: :unprocessable_entity }
-      end
-    end
+    save_and_redirect
   end
 
   def update
+    @trainee = Trainee.find_by_id(params["id"])
+    save_and_redirect
+  end
+
+  def save_and_redirect
+    @trainee.update(trainee_params)
     respond_to do |format|
-      if @trainee.update(trainee_params)
-        format.html { redirect_to @trainee, notice: 'Trainee was successfully updated.' }
-        format.json { render :show, status: :ok, location: @trainee }
+      if @trainee.save
+        format.html { redirect_to @trainee, notice: 'Trainee was successfully saved' }
       else
-        format.html { render :edit }
-        format.json { render json: @trainee.errors, status: :unprocessable_entity }
+        if @trainee.id
+          format.html { redirect_to @trainee, notice: 'Trainee was not saved, try again' }
+        else
+          format.html { redirect_to new_trainee_path, notice: 'Trainee not created, try again' }
+        end
       end
     end
   end
@@ -56,11 +53,7 @@ class TraineesController < ApplicationController
   end
 
   private
-    def set_trainee
-      @trainee = Trainee.find(params[:id])
-    end
-
-    def trainee_params
-      params[:trainee]
-    end
+  def trainee_params
+    params.require(:trainee).permit!
+  end
 end
