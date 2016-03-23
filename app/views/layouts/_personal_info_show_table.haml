@@ -1,15 +1,16 @@
-%table.table.table-striped
-  %thead
-    %th
-      %h3= "#{type} Info"
-  %tbody
-    %tr
-      %td First name: #{person.first_name}
-    %tr
-      %td Last name: #{person.last_name}
-    %tr
-      %td Email Address: #{person.email_address}
-    %tr
-      %td Phone Number: #{person.phone_number}
-    %tr
-      %td Updated at: #{person.updated_at}
+.col-md-8
+  %table.table.table-striped
+    %thead
+      %th
+        %h3= "#{type} Info"
+    %tbody
+      %tr
+        %td First name: #{person.first_name}
+      %tr
+        %td Last name: #{person.last_name}
+      %tr
+        %td Email Address: #{person.email_address}
+      %tr
+        %td Phone Number: #{person.phone_number}
+      %tr
+        %td Updated at: #{person.updated_at}
