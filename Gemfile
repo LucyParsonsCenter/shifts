@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.2.3'
 
+gem "administrate", "~> 0.1.4"
+gem 'inline_svg'
 gem "browserify-rails"
 gem 'turbolinks'
 gem 'react-rails', '~> 1.5.0'
@@ -10,9 +12,8 @@ gem 'devise'
 gem 'font-kit-rails', '~> 1.2.0'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
-gem 'administrate'
 gem 'factory_girl_rails'
-gem 'rails', '4.2.4'
+gem 'rails', '4.2.5'
 gem 'pg'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'sass-rails', '~> 5.0'
