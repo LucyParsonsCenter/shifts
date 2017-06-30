@@ -3,9 +3,12 @@ class CollectiveMembersController < ApplicationController
 
   def index
     @collective_members = CollectiveMember.all
+    render :index
   end
 
   def show
+    @collective_member = CollectiveMember.find_by_id(params["id"])
+    render :show
   end
 
   def new

@@ -1,0 +1,5 @@
+%h1= "#{@trainee.first_name} #{@trainee.try(:last_name)}"
+= render partial: "layouts/personal_info_show_table", locals: {person: @trainee, type: "Trainee"}
+.col-md-8
+  %a.btn.right-button.btn-primary{href: "/trainees/#{@trainee.id}/edit", type: "button"}
+    Edit

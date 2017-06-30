@@ -1,0 +1,2 @@
+%h1= "#{@collective_member.first_name} #{@collective_member.try(:last_name)}"
+= render partial: "layouts/personal_info_show_table", locals: {person: @collective_member, type: "Collective Member"}

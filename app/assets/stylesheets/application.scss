@@ -1,7 +1,21 @@
+/*
+ * = require rails_bootstrap_forms
+ */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "fullcalendar";
 @import "font-kit-rails";
 @import "react-select";
 
-// styling for the calendar
+.right-button {
+  float: right;
+}
+
+.show-row {
+  a, a:hover {
+    color: #333333;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}

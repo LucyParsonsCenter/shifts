@@ -1,0 +1,15 @@
+%table.table.table-hover
+  %thead
+    %th
+      .col-md-3 Name
+      .col-md-3 Email Address
+      .col-md-3 Phone Number
+  %tbody
+    - people.each do |person|
+      %tr
+        %td
+          .row
+            %a.show-row{href: "#{path}/#{person.id}"}
+              .col-md-3= "#{person.first_name} #{person.try(:last_name)}"
+              .col-md-3= person.try(:email_address)
+              .col-md-3= person.phone_number
