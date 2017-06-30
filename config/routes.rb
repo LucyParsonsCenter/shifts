@@ -22,4 +22,6 @@ Rails.application.routes.draw do
   get '/meetings_feed' => 'events#meetings'
   get '/events_feed' => 'events#events'
   post '/create_or_update_event' => 'events#create_or_update'
+
+  get '/.well-known/acme-challenge/:id' => 'static_pages#letsencrypt'
 end
